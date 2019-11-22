@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdms.crud.dao.KtbginfoMapper">
+  <resultMap id="BaseResultMap" type="com.gdms.crud.bean.Ktbginfo">
+    <id column="KTBGInfoId" jdbcType="INTEGER" property="ktbginfoid" />
+    <result column="KTBGFJName" jdbcType="VARCHAR" property="ktbgfjname" />
+    <result column="KTBGPath" jdbcType="VARCHAR" property="ktbgpath" />
+    <result column="StudentId" jdbcType="VARCHAR" property="studentid" />
+    <result column="GraduationDesignId" jdbcType="INTEGER" property="graduationdesignid" />
+    <result column="GraduationDesignResultId" jdbcType="INTEGER" property="graduationdesignresultid" />
+    <result column="UploadTime" jdbcType="VARCHAR" property="uploadtime" />
+    <result column="LastAlertTime" jdbcType="VARCHAR" property="lastalerttime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gdms.crud.bean.Ktbginfo">
+    <result column="KTBGDetail" jdbcType="LONGVARCHAR" property="ktbgdetail" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    KTBGInfoId, KTBGFJName, KTBGPath, StudentId, GraduationDesignId, GraduationDesignResultId, 
+    UploadTime, LastAlertTime
+  </sql>
+  <sql id="Blob_Column_List">
+    KTBGDetail
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.gdms.crud.bean.KtbginfoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ktbginfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.gdms.crud.bean.KtbginfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ktbginfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ktbginfo
+    where KTBGInfoId = #{ktbginfoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ktbginfo
+    where KTBGInfoId = #{ktbginfoid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdms.crud.bean.KtbginfoExample">
+    delete from ktbginfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdms.crud.bean.Ktbginfo">
+    insert into ktbginfo (KTBGInfoId, KTBGFJName, KTBGPath, 
+      StudentId, GraduationDesignId, GraduationDesignResultId, 
+      UploadTime, LastAlertTime, KTBGDetail
+      )
+    values (#{ktbginfoid,jdbcType=INTEGER}, #{ktbgfjname,jdbcType=VARCHAR}, #{ktbgpath,jdbcType=VARCHAR}, 
+      #{studentid,jdbcType=VARCHAR}, #{graduationdesignid,jdbcType=INTEGER}, #{graduationdesignresultid,jdbcType=INTEGER}, 
+      #{uploadtime,jdbcType=VARCHAR}, #{lastalerttime,jdbcType=VARCHAR}, #{ktbgdetail,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdms.crud.bean.Ktbginfo">
+    insert into ktbginfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ktbginfoid != null">
+        KTBGInfoId,
+      </if>
+      <if test="ktbgfjname != null">
+        KTBGFJName,
+      </if>
+      <if test="ktbgpath != null">
+        KTBGPath,
+      </if>
+      <if test="studentid != null">
+        StudentId,
+      </if>
+      <if test="graduationdesignid != null">
+        GraduationDesignId,
+      </if>
+      <if test="graduationdesignresultid != null">
+        GraduationDesignResultId,
+      </if>
+      <if test="uploadtime != null">
+        UploadTime,
+      </if>
+      <if test="lastalerttime != null">
+        LastAlertTime,
+      </if>
+      <if test="ktbgdetail != null">
+        KTBGDetail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ktbginfoid != null">
+        #{ktbginfoid,jdbcType=INTEGER},
+      </if>
+      <if test="ktbgfjname != null">
+        #{ktbgfjname,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbgpath != null">
+        #{ktbgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationdesignid != null">
+        #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="graduationdesignresultid != null">
+        #{graduationdesignresultid,jdbcType=INTEGER},
+      </if>
+      <if test="uploadtime != null">
+        #{uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastalerttime != null">
+        #{lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbgdetail != null">
+        #{ktbgdetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdms.crud.bean.KtbginfoExample" resultType="java.lang.Long">
+    select count(*) from ktbginfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ktbginfo
+    <set>
+      <if test="record.ktbginfoid != null">
+        KTBGInfoId = #{record.ktbginfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ktbgfjname != null">
+        KTBGFJName = #{record.ktbgfjname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ktbgpath != null">
+        KTBGPath = #{record.ktbgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentid != null">
+        StudentId = #{record.studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduationdesignid != null">
+        GraduationDesignId = #{record.graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="record.graduationdesignresultid != null">
+        GraduationDesignResultId = #{record.graduationdesignresultid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uploadtime != null">
+        UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastalerttime != null">
+        LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ktbgdetail != null">
+        KTBGDetail = #{record.ktbgdetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update ktbginfo
+    set KTBGInfoId = #{record.ktbginfoid,jdbcType=INTEGER},
+      KTBGFJName = #{record.ktbgfjname,jdbcType=VARCHAR},
+      KTBGPath = #{record.ktbgpath,jdbcType=VARCHAR},
+      StudentId = #{record.studentid,jdbcType=VARCHAR},
+      GraduationDesignId = #{record.graduationdesignid,jdbcType=INTEGER},
+      GraduationDesignResultId = #{record.graduationdesignresultid,jdbcType=INTEGER},
+      UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      KTBGDetail = #{record.ktbgdetail,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ktbginfo
+    set KTBGInfoId = #{record.ktbginfoid,jdbcType=INTEGER},
+      KTBGFJName = #{record.ktbgfjname,jdbcType=VARCHAR},
+      KTBGPath = #{record.ktbgpath,jdbcType=VARCHAR},
+      StudentId = #{record.studentid,jdbcType=VARCHAR},
+      GraduationDesignId = #{record.graduationdesignid,jdbcType=INTEGER},
+      GraduationDesignResultId = #{record.graduationdesignresultid,jdbcType=INTEGER},
+      UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdms.crud.bean.Ktbginfo">
+    update ktbginfo
+    <set>
+      <if test="ktbgfjname != null">
+        KTBGFJName = #{ktbgfjname,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbgpath != null">
+        KTBGPath = #{ktbgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        StudentId = #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationdesignid != null">
+        GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="graduationdesignresultid != null">
+        GraduationDesignResultId = #{graduationdesignresultid,jdbcType=INTEGER},
+      </if>
+      <if test="uploadtime != null">
+        UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastalerttime != null">
+        LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbgdetail != null">
+        KTBGDetail = #{ktbgdetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where KTBGInfoId = #{ktbginfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gdms.crud.bean.Ktbginfo">
+    update ktbginfo
+    set KTBGFJName = #{ktbgfjname,jdbcType=VARCHAR},
+      KTBGPath = #{ktbgpath,jdbcType=VARCHAR},
+      StudentId = #{studentid,jdbcType=VARCHAR},
+      GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER},
+      GraduationDesignResultId = #{graduationdesignresultid,jdbcType=INTEGER},
+      UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      KTBGDetail = #{ktbgdetail,jdbcType=LONGVARCHAR}
+    where KTBGInfoId = #{ktbginfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdms.crud.bean.Ktbginfo">
+    update ktbginfo
+    set KTBGFJName = #{ktbgfjname,jdbcType=VARCHAR},
+      KTBGPath = #{ktbgpath,jdbcType=VARCHAR},
+      StudentId = #{studentid,jdbcType=VARCHAR},
+      GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER},
+      GraduationDesignResultId = #{graduationdesignresultid,jdbcType=INTEGER},
+      UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{lastalerttime,jdbcType=VARCHAR}
+    where KTBGInfoId = #{ktbginfoid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdms.crud.dao.WwywhyjinfoMapper">
+  <resultMap id="BaseResultMap" type="com.gdms.crud.bean.Wwywhyjinfo">
+    <id column="WWYWYYJID" jdbcType="INTEGER" property="wwywyyjid" />
+    <result column="WWFJName" jdbcType="VARCHAR" property="wwfjname" />
+    <result column="WWFJPath" jdbcType="VARCHAR" property="wwfjpath" />
+    <result column="YWFJName" jdbcType="VARCHAR" property="ywfjname" />
+    <result column="YWFJPath" jdbcType="VARCHAR" property="ywfjpath" />
+    <result column="UploadTime" jdbcType="VARCHAR" property="uploadtime" />
+    <result column="LastAlertTime" jdbcType="VARCHAR" property="lastalerttime" />
+    <result column="StudentID" jdbcType="VARCHAR" property="studentid" />
+    <result column="GraduationDesignID" jdbcType="INTEGER" property="graduationdesignid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gdms.crud.bean.WwywhyjinfoWithBLOBs">
+    <result column="WWYWNR" jdbcType="LONGVARCHAR" property="wwywnr" />
+    <result column="YWNR" jdbcType="LONGVARCHAR" property="ywnr" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    WWYWYYJID, WWFJName, WWFJPath, YWFJName, YWFJPath, UploadTime, LastAlertTime, StudentID, 
+    GraduationDesignID
+  </sql>
+  <sql id="Blob_Column_List">
+    WWYWNR, YWNR
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.gdms.crud.bean.WwywhyjinfoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from wwywhyjinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.gdms.crud.bean.WwywhyjinfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wwywhyjinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from wwywhyjinfo
+    where WWYWYYJID = #{wwywyyjid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wwywhyjinfo
+    where WWYWYYJID = #{wwywyyjid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdms.crud.bean.WwywhyjinfoExample">
+    delete from wwywhyjinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdms.crud.bean.WwywhyjinfoWithBLOBs">
+    insert into wwywhyjinfo (WWYWYYJID, WWFJName, WWFJPath, 
+      YWFJName, YWFJPath, UploadTime, 
+      LastAlertTime, StudentID, GraduationDesignID, 
+      WWYWNR, YWNR)
+    values (#{wwywyyjid,jdbcType=INTEGER}, #{wwfjname,jdbcType=VARCHAR}, #{wwfjpath,jdbcType=VARCHAR}, 
+      #{ywfjname,jdbcType=VARCHAR}, #{ywfjpath,jdbcType=VARCHAR}, #{uploadtime,jdbcType=VARCHAR}, 
+      #{lastalerttime,jdbcType=VARCHAR}, #{studentid,jdbcType=VARCHAR}, #{graduationdesignid,jdbcType=INTEGER}, 
+      #{wwywnr,jdbcType=LONGVARCHAR}, #{ywnr,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdms.crud.bean.WwywhyjinfoWithBLOBs">
+    insert into wwywhyjinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wwywyyjid != null">
+        WWYWYYJID,
+      </if>
+      <if test="wwfjname != null">
+        WWFJName,
+      </if>
+      <if test="wwfjpath != null">
+        WWFJPath,
+      </if>
+      <if test="ywfjname != null">
+        YWFJName,
+      </if>
+      <if test="ywfjpath != null">
+        YWFJPath,
+      </if>
+      <if test="uploadtime != null">
+        UploadTime,
+      </if>
+      <if test="lastalerttime != null">
+        LastAlertTime,
+      </if>
+      <if test="studentid != null">
+        StudentID,
+      </if>
+      <if test="graduationdesignid != null">
+        GraduationDesignID,
+      </if>
+      <if test="wwywnr != null">
+        WWYWNR,
+      </if>
+      <if test="ywnr != null">
+        YWNR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wwywyyjid != null">
+        #{wwywyyjid,jdbcType=INTEGER},
+      </if>
+      <if test="wwfjname != null">
+        #{wwfjname,jdbcType=VARCHAR},
+      </if>
+      <if test="wwfjpath != null">
+        #{wwfjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="ywfjname != null">
+        #{ywfjname,jdbcType=VARCHAR},
+      </if>
+      <if test="ywfjpath != null">
+        #{ywfjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null">
+        #{uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastalerttime != null">
+        #{lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationdesignid != null">
+        #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="wwywnr != null">
+        #{wwywnr,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ywnr != null">
+        #{ywnr,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdms.crud.bean.WwywhyjinfoExample" resultType="java.lang.Long">
+    select count(*) from wwywhyjinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update wwywhyjinfo
+    <set>
+      <if test="record.wwywyyjid != null">
+        WWYWYYJID = #{record.wwywyyjid,jdbcType=INTEGER},
+      </if>
+      <if test="record.wwfjname != null">
+        WWFJName = #{record.wwfjname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wwfjpath != null">
+        WWFJPath = #{record.wwfjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ywfjname != null">
+        YWFJName = #{record.ywfjname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ywfjpath != null">
+        YWFJPath = #{record.ywfjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadtime != null">
+        UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastalerttime != null">
+        LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentid != null">
+        StudentID = #{record.studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduationdesignid != null">
+        GraduationDesignID = #{record.graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="record.wwywnr != null">
+        WWYWNR = #{record.wwywnr,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.ywnr != null">
+        YWNR = #{record.ywnr,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update wwywhyjinfo
+    set WWYWYYJID = #{record.wwywyyjid,jdbcType=INTEGER},
+      WWFJName = #{record.wwfjname,jdbcType=VARCHAR},
+      WWFJPath = #{record.wwfjpath,jdbcType=VARCHAR},
+      YWFJName = #{record.ywfjname,jdbcType=VARCHAR},
+      YWFJPath = #{record.ywfjpath,jdbcType=VARCHAR},
+      UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      StudentID = #{record.studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{record.graduationdesignid,jdbcType=INTEGER},
+      WWYWNR = #{record.wwywnr,jdbcType=LONGVARCHAR},
+      YWNR = #{record.ywnr,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update wwywhyjinfo
+    set WWYWYYJID = #{record.wwywyyjid,jdbcType=INTEGER},
+      WWFJName = #{record.wwfjname,jdbcType=VARCHAR},
+      WWFJPath = #{record.wwfjpath,jdbcType=VARCHAR},
+      YWFJName = #{record.ywfjname,jdbcType=VARCHAR},
+      YWFJPath = #{record.ywfjpath,jdbcType=VARCHAR},
+      UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      StudentID = #{record.studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{record.graduationdesignid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdms.crud.bean.WwywhyjinfoWithBLOBs">
+    update wwywhyjinfo
+    <set>
+      <if test="wwfjname != null">
+        WWFJName = #{wwfjname,jdbcType=VARCHAR},
+      </if>
+      <if test="wwfjpath != null">
+        WWFJPath = #{wwfjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="ywfjname != null">
+        YWFJName = #{ywfjname,jdbcType=VARCHAR},
+      </if>
+      <if test="ywfjpath != null">
+        YWFJPath = #{ywfjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null">
+        UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastalerttime != null">
+        LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        StudentID = #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationdesignid != null">
+        GraduationDesignID = #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="wwywnr != null">
+        WWYWNR = #{wwywnr,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ywnr != null">
+        YWNR = #{ywnr,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where WWYWYYJID = #{wwywyyjid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gdms.crud.bean.WwywhyjinfoWithBLOBs">
+    update wwywhyjinfo
+    set WWFJName = #{wwfjname,jdbcType=VARCHAR},
+      WWFJPath = #{wwfjpath,jdbcType=VARCHAR},
+      YWFJName = #{ywfjname,jdbcType=VARCHAR},
+      YWFJPath = #{ywfjpath,jdbcType=VARCHAR},
+      UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      StudentID = #{studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{graduationdesignid,jdbcType=INTEGER},
+      WWYWNR = #{wwywnr,jdbcType=LONGVARCHAR},
+      YWNR = #{ywnr,jdbcType=LONGVARCHAR}
+    where WWYWYYJID = #{wwywyyjid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdms.crud.bean.Wwywhyjinfo">
+    update wwywhyjinfo
+    set WWFJName = #{wwfjname,jdbcType=VARCHAR},
+      WWFJPath = #{wwfjpath,jdbcType=VARCHAR},
+      YWFJName = #{ywfjname,jdbcType=VARCHAR},
+      YWFJPath = #{ywfjpath,jdbcType=VARCHAR},
+      UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      StudentID = #{studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{graduationdesignid,jdbcType=INTEGER}
+    where WWYWYYJID = #{wwywyyjid,jdbcType=INTEGER}
+  </update>
+</mapper>

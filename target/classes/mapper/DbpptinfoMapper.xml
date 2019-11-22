@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdms.crud.dao.DbpptinfoMapper">
+  <resultMap id="BaseResultMap" type="com.gdms.crud.bean.Dbpptinfo">
+    <id column="DBPPTInfoId" jdbcType="INTEGER" property="dbpptinfoid" />
+    <result column="Title" jdbcType="VARCHAR" property="title" />
+    <result column="FJName" jdbcType="VARCHAR" property="fjname" />
+    <result column="FJPath" jdbcType="VARCHAR" property="fjpath" />
+    <result column="UploadTime" jdbcType="VARCHAR" property="uploadtime" />
+    <result column="LastAlertTime" jdbcType="VARCHAR" property="lastalerttime" />
+    <result column="StudentID" jdbcType="VARCHAR" property="studentid" />
+    <result column="GraduationDesignID" jdbcType="INTEGER" property="graduationdesignid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gdms.crud.bean.Dbpptinfo">
+    <result column="Nrzy" jdbcType="LONGVARCHAR" property="nrzy" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DBPPTInfoId, Title, FJName, FJPath, UploadTime, LastAlertTime, StudentID, GraduationDesignID
+  </sql>
+  <sql id="Blob_Column_List">
+    Nrzy
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.gdms.crud.bean.DbpptinfoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dbpptinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.gdms.crud.bean.DbpptinfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dbpptinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dbpptinfo
+    where DBPPTInfoId = #{dbpptinfoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbpptinfo
+    where DBPPTInfoId = #{dbpptinfoid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdms.crud.bean.DbpptinfoExample">
+    delete from dbpptinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdms.crud.bean.Dbpptinfo">
+    insert into dbpptinfo (DBPPTInfoId, Title, FJName, 
+      FJPath, UploadTime, LastAlertTime, 
+      StudentID, GraduationDesignID, Nrzy
+      )
+    values (#{dbpptinfoid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{fjname,jdbcType=VARCHAR}, 
+      #{fjpath,jdbcType=VARCHAR}, #{uploadtime,jdbcType=VARCHAR}, #{lastalerttime,jdbcType=VARCHAR}, 
+      #{studentid,jdbcType=VARCHAR}, #{graduationdesignid,jdbcType=INTEGER}, #{nrzy,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdms.crud.bean.Dbpptinfo">
+    insert into dbpptinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dbpptinfoid != null">
+        DBPPTInfoId,
+      </if>
+      <if test="title != null">
+        Title,
+      </if>
+      <if test="fjname != null">
+        FJName,
+      </if>
+      <if test="fjpath != null">
+        FJPath,
+      </if>
+      <if test="uploadtime != null">
+        UploadTime,
+      </if>
+      <if test="lastalerttime != null">
+        LastAlertTime,
+      </if>
+      <if test="studentid != null">
+        StudentID,
+      </if>
+      <if test="graduationdesignid != null">
+        GraduationDesignID,
+      </if>
+      <if test="nrzy != null">
+        Nrzy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dbpptinfoid != null">
+        #{dbpptinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="fjname != null">
+        #{fjname,jdbcType=VARCHAR},
+      </if>
+      <if test="fjpath != null">
+        #{fjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null">
+        #{uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastalerttime != null">
+        #{lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationdesignid != null">
+        #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="nrzy != null">
+        #{nrzy,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdms.crud.bean.DbpptinfoExample" resultType="java.lang.Long">
+    select count(*) from dbpptinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update dbpptinfo
+    <set>
+      <if test="record.dbpptinfoid != null">
+        DBPPTInfoId = #{record.dbpptinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null">
+        Title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fjname != null">
+        FJName = #{record.fjname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fjpath != null">
+        FJPath = #{record.fjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadtime != null">
+        UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastalerttime != null">
+        LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentid != null">
+        StudentID = #{record.studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduationdesignid != null">
+        GraduationDesignID = #{record.graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="record.nrzy != null">
+        Nrzy = #{record.nrzy,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update dbpptinfo
+    set DBPPTInfoId = #{record.dbpptinfoid,jdbcType=INTEGER},
+      Title = #{record.title,jdbcType=VARCHAR},
+      FJName = #{record.fjname,jdbcType=VARCHAR},
+      FJPath = #{record.fjpath,jdbcType=VARCHAR},
+      UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      StudentID = #{record.studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{record.graduationdesignid,jdbcType=INTEGER},
+      Nrzy = #{record.nrzy,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update dbpptinfo
+    set DBPPTInfoId = #{record.dbpptinfoid,jdbcType=INTEGER},
+      Title = #{record.title,jdbcType=VARCHAR},
+      FJName = #{record.fjname,jdbcType=VARCHAR},
+      FJPath = #{record.fjpath,jdbcType=VARCHAR},
+      UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      StudentID = #{record.studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{record.graduationdesignid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdms.crud.bean.Dbpptinfo">
+    update dbpptinfo
+    <set>
+      <if test="title != null">
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="fjname != null">
+        FJName = #{fjname,jdbcType=VARCHAR},
+      </if>
+      <if test="fjpath != null">
+        FJPath = #{fjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null">
+        UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastalerttime != null">
+        LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        StudentID = #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationdesignid != null">
+        GraduationDesignID = #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="nrzy != null">
+        Nrzy = #{nrzy,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where DBPPTInfoId = #{dbpptinfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gdms.crud.bean.Dbpptinfo">
+    update dbpptinfo
+    set Title = #{title,jdbcType=VARCHAR},
+      FJName = #{fjname,jdbcType=VARCHAR},
+      FJPath = #{fjpath,jdbcType=VARCHAR},
+      UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      StudentID = #{studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{graduationdesignid,jdbcType=INTEGER},
+      Nrzy = #{nrzy,jdbcType=LONGVARCHAR}
+    where DBPPTInfoId = #{dbpptinfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdms.crud.bean.Dbpptinfo">
+    update dbpptinfo
+    set Title = #{title,jdbcType=VARCHAR},
+      FJName = #{fjname,jdbcType=VARCHAR},
+      FJPath = #{fjpath,jdbcType=VARCHAR},
+      UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      StudentID = #{studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{graduationdesignid,jdbcType=INTEGER}
+    where DBPPTInfoId = #{dbpptinfoid,jdbcType=INTEGER}
+  </update>
+</mapper>

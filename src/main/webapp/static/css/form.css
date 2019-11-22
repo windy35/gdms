@@ -1,0 +1,60 @@
+@charset "UTF-8";
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color:#E7F1FA;
+}
+
+ul{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+.HeadTitle{
+	font-size: 25px;
+	color: #FF4500;
+	font-weight: bold;
+}
+
+.zs{
+	font-size: 20px;
+	color: #FF4500;
+	font-weight: bold;	
+}
+
+.Context{
+	background-color: #FFFFF0;
+	height: auto !important;
+	min-height: 230px;    
+}
+
+.DivStyle{
+	background-color: #FFFFF0;    
+}
+
+
+.title2{
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+
+.title3{
+	color: #a6a4a5;
+    font-size: 12px;
+}
+
+.textinline{
+	display:inline;
+}
+
+.hr0{ 
+	height:1px;
+	border:none;
+	border-top:1px dashed #0066CC;
+	}
+	
+.hover{
+	cursor:pointer;
+}
+

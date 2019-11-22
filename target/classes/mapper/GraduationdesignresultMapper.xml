@@ -1,0 +1,1422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdms.crud.dao.GraduationdesignresultMapper">
+  <resultMap id="BaseResultMap" type="com.gdms.crud.bean.Graduationdesignresult">
+    <id column="GraduationDesignResultId" jdbcType="INTEGER" property="graduationdesignresultid" />
+    <result column="GraduationDesignId" jdbcType="INTEGER" property="graduationdesignid" />
+    <result column="DepartmentId" jdbcType="INTEGER" property="departmentid" />
+    <result column="InstructorId" jdbcType="VARCHAR" property="instructorid" />
+    <result column="StudentId" jdbcType="VARCHAR" property="studentid" />
+    <result column="ChooseTime" jdbcType="VARCHAR" property="choosetime" />
+    <result column="LastAlertTime" jdbcType="VARCHAR" property="lastalerttime" />
+    <result column="Title" jdbcType="VARCHAR" property="title" />
+    <result column="TypeId" jdbcType="INTEGER" property="typeid" />
+    <result column="TitleSourceId" jdbcType="INTEGER" property="titlesourceid" />
+    <result column="KTBGAuditStatusId" jdbcType="INTEGER" property="ktbgauditstatusid" />
+    <result column="KTBGInstructorOpinion" jdbcType="VARCHAR" property="ktbginstructoropinion" />
+    <result column="KTBGInstructorDeclareTime" jdbcType="VARCHAR" property="ktbginstructordeclaretime" />
+    <result column="KTBGInstructorSHR" jdbcType="VARCHAR" property="ktbginstructorshr" />
+    <result column="KTBGExpertOpinion" jdbcType="VARCHAR" property="ktbgexpertopinion" />
+    <result column="KTBGExpertDeclareTime" jdbcType="VARCHAR" property="ktbgexpertdeclaretime" />
+    <result column="KTBGExpertSHR" jdbcType="VARCHAR" property="ktbgexpertshr" />
+    <result column="ZQJCBAuditStatusId" jdbcType="INTEGER" property="zqjcbauditstatusid" />
+    <result column="ZQJCBInstructorOpinion" jdbcType="VARCHAR" property="zqjcbinstructoropinion" />
+    <result column="ZQJCBInstructorDeclareTime" jdbcType="VARCHAR" property="zqjcbinstructordeclaretime" />
+    <result column="ZQJCBInstructorSHR" jdbcType="VARCHAR" property="zqjcbinstructorshr" />
+    <result column="ZQJCBExpertOpinion" jdbcType="VARCHAR" property="zqjcbexpertopinion" />
+    <result column="ZQJCBExpertDeclareTime" jdbcType="VARCHAR" property="zqjcbexpertdeclaretime" />
+    <result column="ZQJCBExpertSHR" jdbcType="VARCHAR" property="zqjcbexpertshr" />
+    <result column="BYLWAuditStatusId" jdbcType="INTEGER" property="bylwauditstatusid" />
+    <result column="BYLWInstructorOpinion" jdbcType="VARCHAR" property="bylwinstructoropinion" />
+    <result column="BYLWInstructorDeclareTime" jdbcType="VARCHAR" property="bylwinstructordeclaretime" />
+    <result column="BYLWInstructorSHR" jdbcType="VARCHAR" property="bylwinstructorshr" />
+    <result column="BYLWExpertOpinion" jdbcType="VARCHAR" property="bylwexpertopinion" />
+    <result column="BYLWExpertDeclareTime" jdbcType="VARCHAR" property="bylwexpertdeclaretime" />
+    <result column="BYLWExpertSHR" jdbcType="VARCHAR" property="bylwexpertshr" />
+    <result column="DBPPTAuditStatusId" jdbcType="INTEGER" property="dbpptauditstatusid" />
+    <result column="DBPPTInstructorOpinion" jdbcType="VARCHAR" property="dbpptinstructoropinion" />
+    <result column="DBPPTInstructorDeclareTime" jdbcType="VARCHAR" property="dbpptinstructordeclaretime" />
+    <result column="DBPPTInstructorSHR" jdbcType="VARCHAR" property="dbpptinstructorshr" />
+    <result column="DBPPTExpertOpinion" jdbcType="VARCHAR" property="dbpptexpertopinion" />
+    <result column="DBPPTExpertDeclareTime" jdbcType="VARCHAR" property="dbpptexpertdeclaretime" />
+    <result column="DBPPTExpertSHR" jdbcType="VARCHAR" property="dbpptexpertshr" />
+    <result column="KTBGInfoId" jdbcType="INTEGER" property="ktbginfoid" />
+    <result column="ZQJCBInfoId" jdbcType="INTEGER" property="zqjcbinfoid" />
+    <result column="BYLWInfoId" jdbcType="INTEGER" property="bylwinfoid" />
+    <result column="DBPPTInfoId" jdbcType="INTEGER" property="dbpptinfoid" />
+    <result column="ZDJLInfoId" jdbcType="INTEGER" property="zdjlinfoid" />
+    <result column="WWYWHYJInfoId" jdbcType="INTEGER" property="wwywhyjinfoid" />
+    <result column="ZDJLAuditStatusId" jdbcType="INTEGER" property="zdjlauditstatusid" />
+    <result column="ZDJLInstructorOpinion" jdbcType="VARCHAR" property="zdjlinstructoropinion" />
+    <result column="ZDJLInstructorDeclareTime" jdbcType="VARCHAR" property="zdjlinstructordeclaretime" />
+    <result column="ZDJLInstructorSHR" jdbcType="VARCHAR" property="zdjlinstructorshr" />
+    <result column="ZDJLExpertOpinion" jdbcType="VARCHAR" property="zdjlexpertopinion" />
+    <result column="ZDJLExpertDeclareTime" jdbcType="VARCHAR" property="zdjlexpertdeclaretime" />
+    <result column="ZDJLExpertSHR" jdbcType="VARCHAR" property="zdjlexpertshr" />
+    <result column="WWYWHYJAuditStatusId" jdbcType="INTEGER" property="wwywhyjauditstatusid" />
+    <result column="WWYWHYJInstructorOpinion" jdbcType="VARCHAR" property="wwywhyjinstructoropinion" />
+    <result column="WWYWHYJInstructorDeclareTime" jdbcType="VARCHAR" property="wwywhyjinstructordeclaretime" />
+    <result column="WWYWHYJInstructorSHR" jdbcType="VARCHAR" property="wwywhyjinstructorshr" />
+    <result column="WWYWHYJExpertOpinion" jdbcType="VARCHAR" property="wwywhyjexpertopinion" />
+    <result column="WWYWHYJExpertDeclareTime" jdbcType="VARCHAR" property="wwywhyjexpertdeclaretime" />
+    <result column="WWYWHYJExpertSHR" jdbcType="VARCHAR" property="wwywhyjexpertshr" />
+    <result column="Teacher_Declare_sign" jdbcType="BIT" property="teacherDeclareSign" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gdms.crud.bean.GraduationdesignresultWithBLOBs">
+    <result column="KTBGInstructorDetailOpinion" jdbcType="LONGVARCHAR" property="ktbginstructordetailopinion" />
+    <result column="KTBGExpertDetailOpinion" jdbcType="LONGVARCHAR" property="ktbgexpertdetailopinion" />
+    <result column="ZQJCBInstructorDetailOpinion" jdbcType="LONGVARCHAR" property="zqjcbinstructordetailopinion" />
+    <result column="ZQJCBExpertDetailOpinion" jdbcType="LONGVARCHAR" property="zqjcbexpertdetailopinion" />
+    <result column="BYLWInstructorDetailOpinion" jdbcType="LONGVARCHAR" property="bylwinstructordetailopinion" />
+    <result column="BYLWExpertDetailOpinion" jdbcType="LONGVARCHAR" property="bylwexpertdetailopinion" />
+    <result column="DBPPTInstructorDetailOpinion" jdbcType="LONGVARCHAR" property="dbpptinstructordetailopinion" />
+    <result column="DBPPTExpertDetailOpinion" jdbcType="LONGVARCHAR" property="dbpptexpertdetailopinion" />
+    <result column="ZDJLInstructorDetailOpinion" jdbcType="LONGVARCHAR" property="zdjlinstructordetailopinion" />
+    <result column="ZDJLExpertDetailOpinion" jdbcType="LONGVARCHAR" property="zdjlexpertdetailopinion" />
+    <result column="WWYWHYJInstructorDetailOpinion" jdbcType="LONGVARCHAR" property="wwywhyjinstructordetailopinion" />
+    <result column="WWYWHYJExpertDetailOpinion" jdbcType="LONGVARCHAR" property="wwywhyjexpertdetailopinion" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    GraduationDesignResultId, GraduationDesignId, DepartmentId, InstructorId, StudentId, 
+    ChooseTime, LastAlertTime, Title, TypeId, TitleSourceId, KTBGAuditStatusId, KTBGInstructorOpinion, 
+    KTBGInstructorDeclareTime, KTBGInstructorSHR, KTBGExpertOpinion, KTBGExpertDeclareTime, 
+    KTBGExpertSHR, ZQJCBAuditStatusId, ZQJCBInstructorOpinion, ZQJCBInstructorDeclareTime, 
+    ZQJCBInstructorSHR, ZQJCBExpertOpinion, ZQJCBExpertDeclareTime, ZQJCBExpertSHR, BYLWAuditStatusId, 
+    BYLWInstructorOpinion, BYLWInstructorDeclareTime, BYLWInstructorSHR, BYLWExpertOpinion, 
+    BYLWExpertDeclareTime, BYLWExpertSHR, DBPPTAuditStatusId, DBPPTInstructorOpinion, 
+    DBPPTInstructorDeclareTime, DBPPTInstructorSHR, DBPPTExpertOpinion, DBPPTExpertDeclareTime, 
+    DBPPTExpertSHR, KTBGInfoId, ZQJCBInfoId, BYLWInfoId, DBPPTInfoId, ZDJLInfoId, WWYWHYJInfoId, 
+    ZDJLAuditStatusId, ZDJLInstructorOpinion, ZDJLInstructorDeclareTime, ZDJLInstructorSHR, 
+    ZDJLExpertOpinion, ZDJLExpertDeclareTime, ZDJLExpertSHR, WWYWHYJAuditStatusId, WWYWHYJInstructorOpinion, 
+    WWYWHYJInstructorDeclareTime, WWYWHYJInstructorSHR, WWYWHYJExpertOpinion, WWYWHYJExpertDeclareTime, 
+    WWYWHYJExpertSHR, Teacher_Declare_sign
+  </sql>
+  <sql id="Blob_Column_List">
+    KTBGInstructorDetailOpinion, KTBGExpertDetailOpinion, ZQJCBInstructorDetailOpinion, 
+    ZQJCBExpertDetailOpinion, BYLWInstructorDetailOpinion, BYLWExpertDetailOpinion, DBPPTInstructorDetailOpinion, 
+    DBPPTExpertDetailOpinion, ZDJLInstructorDetailOpinion, ZDJLExpertDetailOpinion, WWYWHYJInstructorDetailOpinion, 
+    WWYWHYJExpertDetailOpinion
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.gdms.crud.bean.GraduationdesignresultExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from graduationdesignresult
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.gdms.crud.bean.GraduationdesignresultExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from graduationdesignresult
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from graduationdesignresult
+    where GraduationDesignResultId = #{graduationdesignresultid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from graduationdesignresult
+    where GraduationDesignResultId = #{graduationdesignresultid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdms.crud.bean.GraduationdesignresultExample">
+    delete from graduationdesignresult
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdms.crud.bean.GraduationdesignresultWithBLOBs">
+    insert into graduationdesignresult (GraduationDesignResultId, GraduationDesignId, 
+      DepartmentId, InstructorId, StudentId, 
+      ChooseTime, LastAlertTime, Title, 
+      TypeId, TitleSourceId, KTBGAuditStatusId, 
+      KTBGInstructorOpinion, KTBGInstructorDeclareTime, 
+      KTBGInstructorSHR, KTBGExpertOpinion, KTBGExpertDeclareTime, 
+      KTBGExpertSHR, ZQJCBAuditStatusId, ZQJCBInstructorOpinion, 
+      ZQJCBInstructorDeclareTime, ZQJCBInstructorSHR, 
+      ZQJCBExpertOpinion, ZQJCBExpertDeclareTime, 
+      ZQJCBExpertSHR, BYLWAuditStatusId, BYLWInstructorOpinion, 
+      BYLWInstructorDeclareTime, BYLWInstructorSHR, 
+      BYLWExpertOpinion, BYLWExpertDeclareTime, 
+      BYLWExpertSHR, DBPPTAuditStatusId, DBPPTInstructorOpinion, 
+      DBPPTInstructorDeclareTime, DBPPTInstructorSHR, 
+      DBPPTExpertOpinion, DBPPTExpertDeclareTime, 
+      DBPPTExpertSHR, KTBGInfoId, ZQJCBInfoId, 
+      BYLWInfoId, DBPPTInfoId, ZDJLInfoId, 
+      WWYWHYJInfoId, ZDJLAuditStatusId, ZDJLInstructorOpinion, 
+      ZDJLInstructorDeclareTime, ZDJLInstructorSHR, 
+      ZDJLExpertOpinion, ZDJLExpertDeclareTime, 
+      ZDJLExpertSHR, WWYWHYJAuditStatusId, WWYWHYJInstructorOpinion, 
+      WWYWHYJInstructorDeclareTime, WWYWHYJInstructorSHR, 
+      WWYWHYJExpertOpinion, WWYWHYJExpertDeclareTime, 
+      WWYWHYJExpertSHR, Teacher_Declare_sign, KTBGInstructorDetailOpinion, 
+      KTBGExpertDetailOpinion, ZQJCBInstructorDetailOpinion, 
+      ZQJCBExpertDetailOpinion, BYLWInstructorDetailOpinion, 
+      BYLWExpertDetailOpinion, DBPPTInstructorDetailOpinion, 
+      DBPPTExpertDetailOpinion, ZDJLInstructorDetailOpinion, 
+      ZDJLExpertDetailOpinion, WWYWHYJInstructorDetailOpinion, 
+      WWYWHYJExpertDetailOpinion)
+    values (#{graduationdesignresultid,jdbcType=INTEGER}, #{graduationdesignid,jdbcType=INTEGER}, 
+      #{departmentid,jdbcType=INTEGER}, #{instructorid,jdbcType=VARCHAR}, #{studentid,jdbcType=VARCHAR}, 
+      #{choosetime,jdbcType=VARCHAR}, #{lastalerttime,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{typeid,jdbcType=INTEGER}, #{titlesourceid,jdbcType=INTEGER}, #{ktbgauditstatusid,jdbcType=INTEGER}, 
+      #{ktbginstructoropinion,jdbcType=VARCHAR}, #{ktbginstructordeclaretime,jdbcType=VARCHAR}, 
+      #{ktbginstructorshr,jdbcType=VARCHAR}, #{ktbgexpertopinion,jdbcType=VARCHAR}, #{ktbgexpertdeclaretime,jdbcType=VARCHAR}, 
+      #{ktbgexpertshr,jdbcType=VARCHAR}, #{zqjcbauditstatusid,jdbcType=INTEGER}, #{zqjcbinstructoropinion,jdbcType=VARCHAR}, 
+      #{zqjcbinstructordeclaretime,jdbcType=VARCHAR}, #{zqjcbinstructorshr,jdbcType=VARCHAR}, 
+      #{zqjcbexpertopinion,jdbcType=VARCHAR}, #{zqjcbexpertdeclaretime,jdbcType=VARCHAR}, 
+      #{zqjcbexpertshr,jdbcType=VARCHAR}, #{bylwauditstatusid,jdbcType=INTEGER}, #{bylwinstructoropinion,jdbcType=VARCHAR}, 
+      #{bylwinstructordeclaretime,jdbcType=VARCHAR}, #{bylwinstructorshr,jdbcType=VARCHAR}, 
+      #{bylwexpertopinion,jdbcType=VARCHAR}, #{bylwexpertdeclaretime,jdbcType=VARCHAR}, 
+      #{bylwexpertshr,jdbcType=VARCHAR}, #{dbpptauditstatusid,jdbcType=INTEGER}, #{dbpptinstructoropinion,jdbcType=VARCHAR}, 
+      #{dbpptinstructordeclaretime,jdbcType=VARCHAR}, #{dbpptinstructorshr,jdbcType=VARCHAR}, 
+      #{dbpptexpertopinion,jdbcType=VARCHAR}, #{dbpptexpertdeclaretime,jdbcType=VARCHAR}, 
+      #{dbpptexpertshr,jdbcType=VARCHAR}, #{ktbginfoid,jdbcType=INTEGER}, #{zqjcbinfoid,jdbcType=INTEGER}, 
+      #{bylwinfoid,jdbcType=INTEGER}, #{dbpptinfoid,jdbcType=INTEGER}, #{zdjlinfoid,jdbcType=INTEGER}, 
+      #{wwywhyjinfoid,jdbcType=INTEGER}, #{zdjlauditstatusid,jdbcType=INTEGER}, #{zdjlinstructoropinion,jdbcType=VARCHAR}, 
+      #{zdjlinstructordeclaretime,jdbcType=VARCHAR}, #{zdjlinstructorshr,jdbcType=VARCHAR}, 
+      #{zdjlexpertopinion,jdbcType=VARCHAR}, #{zdjlexpertdeclaretime,jdbcType=VARCHAR}, 
+      #{zdjlexpertshr,jdbcType=VARCHAR}, #{wwywhyjauditstatusid,jdbcType=INTEGER}, #{wwywhyjinstructoropinion,jdbcType=VARCHAR}, 
+      #{wwywhyjinstructordeclaretime,jdbcType=VARCHAR}, #{wwywhyjinstructorshr,jdbcType=VARCHAR}, 
+      #{wwywhyjexpertopinion,jdbcType=VARCHAR}, #{wwywhyjexpertdeclaretime,jdbcType=VARCHAR}, 
+      #{wwywhyjexpertshr,jdbcType=VARCHAR}, #{teacherDeclareSign,jdbcType=BIT}, #{ktbginstructordetailopinion,jdbcType=LONGVARCHAR}, 
+      #{ktbgexpertdetailopinion,jdbcType=LONGVARCHAR}, #{zqjcbinstructordetailopinion,jdbcType=LONGVARCHAR}, 
+      #{zqjcbexpertdetailopinion,jdbcType=LONGVARCHAR}, #{bylwinstructordetailopinion,jdbcType=LONGVARCHAR}, 
+      #{bylwexpertdetailopinion,jdbcType=LONGVARCHAR}, #{dbpptinstructordetailopinion,jdbcType=LONGVARCHAR}, 
+      #{dbpptexpertdetailopinion,jdbcType=LONGVARCHAR}, #{zdjlinstructordetailopinion,jdbcType=LONGVARCHAR}, 
+      #{zdjlexpertdetailopinion,jdbcType=LONGVARCHAR}, #{wwywhyjinstructordetailopinion,jdbcType=LONGVARCHAR}, 
+      #{wwywhyjexpertdetailopinion,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdms.crud.bean.GraduationdesignresultWithBLOBs">
+    insert into graduationdesignresult
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="graduationdesignresultid != null">
+        GraduationDesignResultId,
+      </if>
+      <if test="graduationdesignid != null">
+        GraduationDesignId,
+      </if>
+      <if test="departmentid != null">
+        DepartmentId,
+      </if>
+      <if test="instructorid != null">
+        InstructorId,
+      </if>
+      <if test="studentid != null">
+        StudentId,
+      </if>
+      <if test="choosetime != null">
+        ChooseTime,
+      </if>
+      <if test="lastalerttime != null">
+        LastAlertTime,
+      </if>
+      <if test="title != null">
+        Title,
+      </if>
+      <if test="typeid != null">
+        TypeId,
+      </if>
+      <if test="titlesourceid != null">
+        TitleSourceId,
+      </if>
+      <if test="ktbgauditstatusid != null">
+        KTBGAuditStatusId,
+      </if>
+      <if test="ktbginstructoropinion != null">
+        KTBGInstructorOpinion,
+      </if>
+      <if test="ktbginstructordeclaretime != null">
+        KTBGInstructorDeclareTime,
+      </if>
+      <if test="ktbginstructorshr != null">
+        KTBGInstructorSHR,
+      </if>
+      <if test="ktbgexpertopinion != null">
+        KTBGExpertOpinion,
+      </if>
+      <if test="ktbgexpertdeclaretime != null">
+        KTBGExpertDeclareTime,
+      </if>
+      <if test="ktbgexpertshr != null">
+        KTBGExpertSHR,
+      </if>
+      <if test="zqjcbauditstatusid != null">
+        ZQJCBAuditStatusId,
+      </if>
+      <if test="zqjcbinstructoropinion != null">
+        ZQJCBInstructorOpinion,
+      </if>
+      <if test="zqjcbinstructordeclaretime != null">
+        ZQJCBInstructorDeclareTime,
+      </if>
+      <if test="zqjcbinstructorshr != null">
+        ZQJCBInstructorSHR,
+      </if>
+      <if test="zqjcbexpertopinion != null">
+        ZQJCBExpertOpinion,
+      </if>
+      <if test="zqjcbexpertdeclaretime != null">
+        ZQJCBExpertDeclareTime,
+      </if>
+      <if test="zqjcbexpertshr != null">
+        ZQJCBExpertSHR,
+      </if>
+      <if test="bylwauditstatusid != null">
+        BYLWAuditStatusId,
+      </if>
+      <if test="bylwinstructoropinion != null">
+        BYLWInstructorOpinion,
+      </if>
+      <if test="bylwinstructordeclaretime != null">
+        BYLWInstructorDeclareTime,
+      </if>
+      <if test="bylwinstructorshr != null">
+        BYLWInstructorSHR,
+      </if>
+      <if test="bylwexpertopinion != null">
+        BYLWExpertOpinion,
+      </if>
+      <if test="bylwexpertdeclaretime != null">
+        BYLWExpertDeclareTime,
+      </if>
+      <if test="bylwexpertshr != null">
+        BYLWExpertSHR,
+      </if>
+      <if test="dbpptauditstatusid != null">
+        DBPPTAuditStatusId,
+      </if>
+      <if test="dbpptinstructoropinion != null">
+        DBPPTInstructorOpinion,
+      </if>
+      <if test="dbpptinstructordeclaretime != null">
+        DBPPTInstructorDeclareTime,
+      </if>
+      <if test="dbpptinstructorshr != null">
+        DBPPTInstructorSHR,
+      </if>
+      <if test="dbpptexpertopinion != null">
+        DBPPTExpertOpinion,
+      </if>
+      <if test="dbpptexpertdeclaretime != null">
+        DBPPTExpertDeclareTime,
+      </if>
+      <if test="dbpptexpertshr != null">
+        DBPPTExpertSHR,
+      </if>
+      <if test="ktbginfoid != null">
+        KTBGInfoId,
+      </if>
+      <if test="zqjcbinfoid != null">
+        ZQJCBInfoId,
+      </if>
+      <if test="bylwinfoid != null">
+        BYLWInfoId,
+      </if>
+      <if test="dbpptinfoid != null">
+        DBPPTInfoId,
+      </if>
+      <if test="zdjlinfoid != null">
+        ZDJLInfoId,
+      </if>
+      <if test="wwywhyjinfoid != null">
+        WWYWHYJInfoId,
+      </if>
+      <if test="zdjlauditstatusid != null">
+        ZDJLAuditStatusId,
+      </if>
+      <if test="zdjlinstructoropinion != null">
+        ZDJLInstructorOpinion,
+      </if>
+      <if test="zdjlinstructordeclaretime != null">
+        ZDJLInstructorDeclareTime,
+      </if>
+      <if test="zdjlinstructorshr != null">
+        ZDJLInstructorSHR,
+      </if>
+      <if test="zdjlexpertopinion != null">
+        ZDJLExpertOpinion,
+      </if>
+      <if test="zdjlexpertdeclaretime != null">
+        ZDJLExpertDeclareTime,
+      </if>
+      <if test="zdjlexpertshr != null">
+        ZDJLExpertSHR,
+      </if>
+      <if test="wwywhyjauditstatusid != null">
+        WWYWHYJAuditStatusId,
+      </if>
+      <if test="wwywhyjinstructoropinion != null">
+        WWYWHYJInstructorOpinion,
+      </if>
+      <if test="wwywhyjinstructordeclaretime != null">
+        WWYWHYJInstructorDeclareTime,
+      </if>
+      <if test="wwywhyjinstructorshr != null">
+        WWYWHYJInstructorSHR,
+      </if>
+      <if test="wwywhyjexpertopinion != null">
+        WWYWHYJExpertOpinion,
+      </if>
+      <if test="wwywhyjexpertdeclaretime != null">
+        WWYWHYJExpertDeclareTime,
+      </if>
+      <if test="wwywhyjexpertshr != null">
+        WWYWHYJExpertSHR,
+      </if>
+      <if test="teacherDeclareSign != null">
+        Teacher_Declare_sign,
+      </if>
+      <if test="ktbginstructordetailopinion != null">
+        KTBGInstructorDetailOpinion,
+      </if>
+      <if test="ktbgexpertdetailopinion != null">
+        KTBGExpertDetailOpinion,
+      </if>
+      <if test="zqjcbinstructordetailopinion != null">
+        ZQJCBInstructorDetailOpinion,
+      </if>
+      <if test="zqjcbexpertdetailopinion != null">
+        ZQJCBExpertDetailOpinion,
+      </if>
+      <if test="bylwinstructordetailopinion != null">
+        BYLWInstructorDetailOpinion,
+      </if>
+      <if test="bylwexpertdetailopinion != null">
+        BYLWExpertDetailOpinion,
+      </if>
+      <if test="dbpptinstructordetailopinion != null">
+        DBPPTInstructorDetailOpinion,
+      </if>
+      <if test="dbpptexpertdetailopinion != null">
+        DBPPTExpertDetailOpinion,
+      </if>
+      <if test="zdjlinstructordetailopinion != null">
+        ZDJLInstructorDetailOpinion,
+      </if>
+      <if test="zdjlexpertdetailopinion != null">
+        ZDJLExpertDetailOpinion,
+      </if>
+      <if test="wwywhyjinstructordetailopinion != null">
+        WWYWHYJInstructorDetailOpinion,
+      </if>
+      <if test="wwywhyjexpertdetailopinion != null">
+        WWYWHYJExpertDetailOpinion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="graduationdesignresultid != null">
+        #{graduationdesignresultid,jdbcType=INTEGER},
+      </if>
+      <if test="graduationdesignid != null">
+        #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="departmentid != null">
+        #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="instructorid != null">
+        #{instructorid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="choosetime != null">
+        #{choosetime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastalerttime != null">
+        #{lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="titlesourceid != null">
+        #{titlesourceid,jdbcType=INTEGER},
+      </if>
+      <if test="ktbgauditstatusid != null">
+        #{ktbgauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="ktbginstructoropinion != null">
+        #{ktbginstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbginstructordeclaretime != null">
+        #{ktbginstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbginstructorshr != null">
+        #{ktbginstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbgexpertopinion != null">
+        #{ktbgexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbgexpertdeclaretime != null">
+        #{ktbgexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbgexpertshr != null">
+        #{ktbgexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbauditstatusid != null">
+        #{zqjcbauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="zqjcbinstructoropinion != null">
+        #{zqjcbinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbinstructordeclaretime != null">
+        #{zqjcbinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbinstructorshr != null">
+        #{zqjcbinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbexpertopinion != null">
+        #{zqjcbexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbexpertdeclaretime != null">
+        #{zqjcbexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbexpertshr != null">
+        #{zqjcbexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwauditstatusid != null">
+        #{bylwauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="bylwinstructoropinion != null">
+        #{bylwinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwinstructordeclaretime != null">
+        #{bylwinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwinstructorshr != null">
+        #{bylwinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwexpertopinion != null">
+        #{bylwexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwexpertdeclaretime != null">
+        #{bylwexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwexpertshr != null">
+        #{bylwexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptauditstatusid != null">
+        #{dbpptauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="dbpptinstructoropinion != null">
+        #{dbpptinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptinstructordeclaretime != null">
+        #{dbpptinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptinstructorshr != null">
+        #{dbpptinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptexpertopinion != null">
+        #{dbpptexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptexpertdeclaretime != null">
+        #{dbpptexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptexpertshr != null">
+        #{dbpptexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbginfoid != null">
+        #{ktbginfoid,jdbcType=INTEGER},
+      </if>
+      <if test="zqjcbinfoid != null">
+        #{zqjcbinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="bylwinfoid != null">
+        #{bylwinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="dbpptinfoid != null">
+        #{dbpptinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="zdjlinfoid != null">
+        #{zdjlinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="wwywhyjinfoid != null">
+        #{wwywhyjinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="zdjlauditstatusid != null">
+        #{zdjlauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="zdjlinstructoropinion != null">
+        #{zdjlinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="zdjlinstructordeclaretime != null">
+        #{zdjlinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="zdjlinstructorshr != null">
+        #{zdjlinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="zdjlexpertopinion != null">
+        #{zdjlexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="zdjlexpertdeclaretime != null">
+        #{zdjlexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="zdjlexpertshr != null">
+        #{zdjlexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjauditstatusid != null">
+        #{wwywhyjauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="wwywhyjinstructoropinion != null">
+        #{wwywhyjinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjinstructordeclaretime != null">
+        #{wwywhyjinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjinstructorshr != null">
+        #{wwywhyjinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjexpertopinion != null">
+        #{wwywhyjexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjexpertdeclaretime != null">
+        #{wwywhyjexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjexpertshr != null">
+        #{wwywhyjexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherDeclareSign != null">
+        #{teacherDeclareSign,jdbcType=BIT},
+      </if>
+      <if test="ktbginstructordetailopinion != null">
+        #{ktbginstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ktbgexpertdetailopinion != null">
+        #{ktbgexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zqjcbinstructordetailopinion != null">
+        #{zqjcbinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zqjcbexpertdetailopinion != null">
+        #{zqjcbexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bylwinstructordetailopinion != null">
+        #{bylwinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bylwexpertdetailopinion != null">
+        #{bylwexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dbpptinstructordetailopinion != null">
+        #{dbpptinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dbpptexpertdetailopinion != null">
+        #{dbpptexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zdjlinstructordetailopinion != null">
+        #{zdjlinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zdjlexpertdetailopinion != null">
+        #{zdjlexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="wwywhyjinstructordetailopinion != null">
+        #{wwywhyjinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="wwywhyjexpertdetailopinion != null">
+        #{wwywhyjexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdms.crud.bean.GraduationdesignresultExample" resultType="java.lang.Long">
+    select count(*) from graduationdesignresult
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update graduationdesignresult
+    <set>
+      <if test="record.graduationdesignresultid != null">
+        GraduationDesignResultId = #{record.graduationdesignresultid,jdbcType=INTEGER},
+      </if>
+      <if test="record.graduationdesignid != null">
+        GraduationDesignId = #{record.graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="record.departmentid != null">
+        DepartmentId = #{record.departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.instructorid != null">
+        InstructorId = #{record.instructorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentid != null">
+        StudentId = #{record.studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.choosetime != null">
+        ChooseTime = #{record.choosetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastalerttime != null">
+        LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null">
+        Title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeid != null">
+        TypeId = #{record.typeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.titlesourceid != null">
+        TitleSourceId = #{record.titlesourceid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ktbgauditstatusid != null">
+        KTBGAuditStatusId = #{record.ktbgauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ktbginstructoropinion != null">
+        KTBGInstructorOpinion = #{record.ktbginstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ktbginstructordeclaretime != null">
+        KTBGInstructorDeclareTime = #{record.ktbginstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ktbginstructorshr != null">
+        KTBGInstructorSHR = #{record.ktbginstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ktbgexpertopinion != null">
+        KTBGExpertOpinion = #{record.ktbgexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ktbgexpertdeclaretime != null">
+        KTBGExpertDeclareTime = #{record.ktbgexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ktbgexpertshr != null">
+        KTBGExpertSHR = #{record.ktbgexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zqjcbauditstatusid != null">
+        ZQJCBAuditStatusId = #{record.zqjcbauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="record.zqjcbinstructoropinion != null">
+        ZQJCBInstructorOpinion = #{record.zqjcbinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zqjcbinstructordeclaretime != null">
+        ZQJCBInstructorDeclareTime = #{record.zqjcbinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zqjcbinstructorshr != null">
+        ZQJCBInstructorSHR = #{record.zqjcbinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zqjcbexpertopinion != null">
+        ZQJCBExpertOpinion = #{record.zqjcbexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zqjcbexpertdeclaretime != null">
+        ZQJCBExpertDeclareTime = #{record.zqjcbexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zqjcbexpertshr != null">
+        ZQJCBExpertSHR = #{record.zqjcbexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bylwauditstatusid != null">
+        BYLWAuditStatusId = #{record.bylwauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="record.bylwinstructoropinion != null">
+        BYLWInstructorOpinion = #{record.bylwinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bylwinstructordeclaretime != null">
+        BYLWInstructorDeclareTime = #{record.bylwinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bylwinstructorshr != null">
+        BYLWInstructorSHR = #{record.bylwinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bylwexpertopinion != null">
+        BYLWExpertOpinion = #{record.bylwexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bylwexpertdeclaretime != null">
+        BYLWExpertDeclareTime = #{record.bylwexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bylwexpertshr != null">
+        BYLWExpertSHR = #{record.bylwexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbpptauditstatusid != null">
+        DBPPTAuditStatusId = #{record.dbpptauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="record.dbpptinstructoropinion != null">
+        DBPPTInstructorOpinion = #{record.dbpptinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbpptinstructordeclaretime != null">
+        DBPPTInstructorDeclareTime = #{record.dbpptinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbpptinstructorshr != null">
+        DBPPTInstructorSHR = #{record.dbpptinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbpptexpertopinion != null">
+        DBPPTExpertOpinion = #{record.dbpptexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbpptexpertdeclaretime != null">
+        DBPPTExpertDeclareTime = #{record.dbpptexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbpptexpertshr != null">
+        DBPPTExpertSHR = #{record.dbpptexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ktbginfoid != null">
+        KTBGInfoId = #{record.ktbginfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.zqjcbinfoid != null">
+        ZQJCBInfoId = #{record.zqjcbinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.bylwinfoid != null">
+        BYLWInfoId = #{record.bylwinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.dbpptinfoid != null">
+        DBPPTInfoId = #{record.dbpptinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.zdjlinfoid != null">
+        ZDJLInfoId = #{record.zdjlinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.wwywhyjinfoid != null">
+        WWYWHYJInfoId = #{record.wwywhyjinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.zdjlauditstatusid != null">
+        ZDJLAuditStatusId = #{record.zdjlauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="record.zdjlinstructoropinion != null">
+        ZDJLInstructorOpinion = #{record.zdjlinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zdjlinstructordeclaretime != null">
+        ZDJLInstructorDeclareTime = #{record.zdjlinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zdjlinstructorshr != null">
+        ZDJLInstructorSHR = #{record.zdjlinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zdjlexpertopinion != null">
+        ZDJLExpertOpinion = #{record.zdjlexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zdjlexpertdeclaretime != null">
+        ZDJLExpertDeclareTime = #{record.zdjlexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zdjlexpertshr != null">
+        ZDJLExpertSHR = #{record.zdjlexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wwywhyjauditstatusid != null">
+        WWYWHYJAuditStatusId = #{record.wwywhyjauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="record.wwywhyjinstructoropinion != null">
+        WWYWHYJInstructorOpinion = #{record.wwywhyjinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wwywhyjinstructordeclaretime != null">
+        WWYWHYJInstructorDeclareTime = #{record.wwywhyjinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wwywhyjinstructorshr != null">
+        WWYWHYJInstructorSHR = #{record.wwywhyjinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wwywhyjexpertopinion != null">
+        WWYWHYJExpertOpinion = #{record.wwywhyjexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wwywhyjexpertdeclaretime != null">
+        WWYWHYJExpertDeclareTime = #{record.wwywhyjexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wwywhyjexpertshr != null">
+        WWYWHYJExpertSHR = #{record.wwywhyjexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherDeclareSign != null">
+        Teacher_Declare_sign = #{record.teacherDeclareSign,jdbcType=BIT},
+      </if>
+      <if test="record.ktbginstructordetailopinion != null">
+        KTBGInstructorDetailOpinion = #{record.ktbginstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.ktbgexpertdetailopinion != null">
+        KTBGExpertDetailOpinion = #{record.ktbgexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.zqjcbinstructordetailopinion != null">
+        ZQJCBInstructorDetailOpinion = #{record.zqjcbinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.zqjcbexpertdetailopinion != null">
+        ZQJCBExpertDetailOpinion = #{record.zqjcbexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.bylwinstructordetailopinion != null">
+        BYLWInstructorDetailOpinion = #{record.bylwinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.bylwexpertdetailopinion != null">
+        BYLWExpertDetailOpinion = #{record.bylwexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.dbpptinstructordetailopinion != null">
+        DBPPTInstructorDetailOpinion = #{record.dbpptinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.dbpptexpertdetailopinion != null">
+        DBPPTExpertDetailOpinion = #{record.dbpptexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.zdjlinstructordetailopinion != null">
+        ZDJLInstructorDetailOpinion = #{record.zdjlinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.zdjlexpertdetailopinion != null">
+        ZDJLExpertDetailOpinion = #{record.zdjlexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.wwywhyjinstructordetailopinion != null">
+        WWYWHYJInstructorDetailOpinion = #{record.wwywhyjinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.wwywhyjexpertdetailopinion != null">
+        WWYWHYJExpertDetailOpinion = #{record.wwywhyjexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update graduationdesignresult
+    set GraduationDesignResultId = #{record.graduationdesignresultid,jdbcType=INTEGER},
+      GraduationDesignId = #{record.graduationdesignid,jdbcType=INTEGER},
+      DepartmentId = #{record.departmentid,jdbcType=INTEGER},
+      InstructorId = #{record.instructorid,jdbcType=VARCHAR},
+      StudentId = #{record.studentid,jdbcType=VARCHAR},
+      ChooseTime = #{record.choosetime,jdbcType=VARCHAR},
+      LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      Title = #{record.title,jdbcType=VARCHAR},
+      TypeId = #{record.typeid,jdbcType=INTEGER},
+      TitleSourceId = #{record.titlesourceid,jdbcType=INTEGER},
+      KTBGAuditStatusId = #{record.ktbgauditstatusid,jdbcType=INTEGER},
+      KTBGInstructorOpinion = #{record.ktbginstructoropinion,jdbcType=VARCHAR},
+      KTBGInstructorDeclareTime = #{record.ktbginstructordeclaretime,jdbcType=VARCHAR},
+      KTBGInstructorSHR = #{record.ktbginstructorshr,jdbcType=VARCHAR},
+      KTBGExpertOpinion = #{record.ktbgexpertopinion,jdbcType=VARCHAR},
+      KTBGExpertDeclareTime = #{record.ktbgexpertdeclaretime,jdbcType=VARCHAR},
+      KTBGExpertSHR = #{record.ktbgexpertshr,jdbcType=VARCHAR},
+      ZQJCBAuditStatusId = #{record.zqjcbauditstatusid,jdbcType=INTEGER},
+      ZQJCBInstructorOpinion = #{record.zqjcbinstructoropinion,jdbcType=VARCHAR},
+      ZQJCBInstructorDeclareTime = #{record.zqjcbinstructordeclaretime,jdbcType=VARCHAR},
+      ZQJCBInstructorSHR = #{record.zqjcbinstructorshr,jdbcType=VARCHAR},
+      ZQJCBExpertOpinion = #{record.zqjcbexpertopinion,jdbcType=VARCHAR},
+      ZQJCBExpertDeclareTime = #{record.zqjcbexpertdeclaretime,jdbcType=VARCHAR},
+      ZQJCBExpertSHR = #{record.zqjcbexpertshr,jdbcType=VARCHAR},
+      BYLWAuditStatusId = #{record.bylwauditstatusid,jdbcType=INTEGER},
+      BYLWInstructorOpinion = #{record.bylwinstructoropinion,jdbcType=VARCHAR},
+      BYLWInstructorDeclareTime = #{record.bylwinstructordeclaretime,jdbcType=VARCHAR},
+      BYLWInstructorSHR = #{record.bylwinstructorshr,jdbcType=VARCHAR},
+      BYLWExpertOpinion = #{record.bylwexpertopinion,jdbcType=VARCHAR},
+      BYLWExpertDeclareTime = #{record.bylwexpertdeclaretime,jdbcType=VARCHAR},
+      BYLWExpertSHR = #{record.bylwexpertshr,jdbcType=VARCHAR},
+      DBPPTAuditStatusId = #{record.dbpptauditstatusid,jdbcType=INTEGER},
+      DBPPTInstructorOpinion = #{record.dbpptinstructoropinion,jdbcType=VARCHAR},
+      DBPPTInstructorDeclareTime = #{record.dbpptinstructordeclaretime,jdbcType=VARCHAR},
+      DBPPTInstructorSHR = #{record.dbpptinstructorshr,jdbcType=VARCHAR},
+      DBPPTExpertOpinion = #{record.dbpptexpertopinion,jdbcType=VARCHAR},
+      DBPPTExpertDeclareTime = #{record.dbpptexpertdeclaretime,jdbcType=VARCHAR},
+      DBPPTExpertSHR = #{record.dbpptexpertshr,jdbcType=VARCHAR},
+      KTBGInfoId = #{record.ktbginfoid,jdbcType=INTEGER},
+      ZQJCBInfoId = #{record.zqjcbinfoid,jdbcType=INTEGER},
+      BYLWInfoId = #{record.bylwinfoid,jdbcType=INTEGER},
+      DBPPTInfoId = #{record.dbpptinfoid,jdbcType=INTEGER},
+      ZDJLInfoId = #{record.zdjlinfoid,jdbcType=INTEGER},
+      WWYWHYJInfoId = #{record.wwywhyjinfoid,jdbcType=INTEGER},
+      ZDJLAuditStatusId = #{record.zdjlauditstatusid,jdbcType=INTEGER},
+      ZDJLInstructorOpinion = #{record.zdjlinstructoropinion,jdbcType=VARCHAR},
+      ZDJLInstructorDeclareTime = #{record.zdjlinstructordeclaretime,jdbcType=VARCHAR},
+      ZDJLInstructorSHR = #{record.zdjlinstructorshr,jdbcType=VARCHAR},
+      ZDJLExpertOpinion = #{record.zdjlexpertopinion,jdbcType=VARCHAR},
+      ZDJLExpertDeclareTime = #{record.zdjlexpertdeclaretime,jdbcType=VARCHAR},
+      ZDJLExpertSHR = #{record.zdjlexpertshr,jdbcType=VARCHAR},
+      WWYWHYJAuditStatusId = #{record.wwywhyjauditstatusid,jdbcType=INTEGER},
+      WWYWHYJInstructorOpinion = #{record.wwywhyjinstructoropinion,jdbcType=VARCHAR},
+      WWYWHYJInstructorDeclareTime = #{record.wwywhyjinstructordeclaretime,jdbcType=VARCHAR},
+      WWYWHYJInstructorSHR = #{record.wwywhyjinstructorshr,jdbcType=VARCHAR},
+      WWYWHYJExpertOpinion = #{record.wwywhyjexpertopinion,jdbcType=VARCHAR},
+      WWYWHYJExpertDeclareTime = #{record.wwywhyjexpertdeclaretime,jdbcType=VARCHAR},
+      WWYWHYJExpertSHR = #{record.wwywhyjexpertshr,jdbcType=VARCHAR},
+      Teacher_Declare_sign = #{record.teacherDeclareSign,jdbcType=BIT},
+      KTBGInstructorDetailOpinion = #{record.ktbginstructordetailopinion,jdbcType=LONGVARCHAR},
+      KTBGExpertDetailOpinion = #{record.ktbgexpertdetailopinion,jdbcType=LONGVARCHAR},
+      ZQJCBInstructorDetailOpinion = #{record.zqjcbinstructordetailopinion,jdbcType=LONGVARCHAR},
+      ZQJCBExpertDetailOpinion = #{record.zqjcbexpertdetailopinion,jdbcType=LONGVARCHAR},
+      BYLWInstructorDetailOpinion = #{record.bylwinstructordetailopinion,jdbcType=LONGVARCHAR},
+      BYLWExpertDetailOpinion = #{record.bylwexpertdetailopinion,jdbcType=LONGVARCHAR},
+      DBPPTInstructorDetailOpinion = #{record.dbpptinstructordetailopinion,jdbcType=LONGVARCHAR},
+      DBPPTExpertDetailOpinion = #{record.dbpptexpertdetailopinion,jdbcType=LONGVARCHAR},
+      ZDJLInstructorDetailOpinion = #{record.zdjlinstructordetailopinion,jdbcType=LONGVARCHAR},
+      ZDJLExpertDetailOpinion = #{record.zdjlexpertdetailopinion,jdbcType=LONGVARCHAR},
+      WWYWHYJInstructorDetailOpinion = #{record.wwywhyjinstructordetailopinion,jdbcType=LONGVARCHAR},
+      WWYWHYJExpertDetailOpinion = #{record.wwywhyjexpertdetailopinion,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update graduationdesignresult
+    set GraduationDesignResultId = #{record.graduationdesignresultid,jdbcType=INTEGER},
+      GraduationDesignId = #{record.graduationdesignid,jdbcType=INTEGER},
+      DepartmentId = #{record.departmentid,jdbcType=INTEGER},
+      InstructorId = #{record.instructorid,jdbcType=VARCHAR},
+      StudentId = #{record.studentid,jdbcType=VARCHAR},
+      ChooseTime = #{record.choosetime,jdbcType=VARCHAR},
+      LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      Title = #{record.title,jdbcType=VARCHAR},
+      TypeId = #{record.typeid,jdbcType=INTEGER},
+      TitleSourceId = #{record.titlesourceid,jdbcType=INTEGER},
+      KTBGAuditStatusId = #{record.ktbgauditstatusid,jdbcType=INTEGER},
+      KTBGInstructorOpinion = #{record.ktbginstructoropinion,jdbcType=VARCHAR},
+      KTBGInstructorDeclareTime = #{record.ktbginstructordeclaretime,jdbcType=VARCHAR},
+      KTBGInstructorSHR = #{record.ktbginstructorshr,jdbcType=VARCHAR},
+      KTBGExpertOpinion = #{record.ktbgexpertopinion,jdbcType=VARCHAR},
+      KTBGExpertDeclareTime = #{record.ktbgexpertdeclaretime,jdbcType=VARCHAR},
+      KTBGExpertSHR = #{record.ktbgexpertshr,jdbcType=VARCHAR},
+      ZQJCBAuditStatusId = #{record.zqjcbauditstatusid,jdbcType=INTEGER},
+      ZQJCBInstructorOpinion = #{record.zqjcbinstructoropinion,jdbcType=VARCHAR},
+      ZQJCBInstructorDeclareTime = #{record.zqjcbinstructordeclaretime,jdbcType=VARCHAR},
+      ZQJCBInstructorSHR = #{record.zqjcbinstructorshr,jdbcType=VARCHAR},
+      ZQJCBExpertOpinion = #{record.zqjcbexpertopinion,jdbcType=VARCHAR},
+      ZQJCBExpertDeclareTime = #{record.zqjcbexpertdeclaretime,jdbcType=VARCHAR},
+      ZQJCBExpertSHR = #{record.zqjcbexpertshr,jdbcType=VARCHAR},
+      BYLWAuditStatusId = #{record.bylwauditstatusid,jdbcType=INTEGER},
+      BYLWInstructorOpinion = #{record.bylwinstructoropinion,jdbcType=VARCHAR},
+      BYLWInstructorDeclareTime = #{record.bylwinstructordeclaretime,jdbcType=VARCHAR},
+      BYLWInstructorSHR = #{record.bylwinstructorshr,jdbcType=VARCHAR},
+      BYLWExpertOpinion = #{record.bylwexpertopinion,jdbcType=VARCHAR},
+      BYLWExpertDeclareTime = #{record.bylwexpertdeclaretime,jdbcType=VARCHAR},
+      BYLWExpertSHR = #{record.bylwexpertshr,jdbcType=VARCHAR},
+      DBPPTAuditStatusId = #{record.dbpptauditstatusid,jdbcType=INTEGER},
+      DBPPTInstructorOpinion = #{record.dbpptinstructoropinion,jdbcType=VARCHAR},
+      DBPPTInstructorDeclareTime = #{record.dbpptinstructordeclaretime,jdbcType=VARCHAR},
+      DBPPTInstructorSHR = #{record.dbpptinstructorshr,jdbcType=VARCHAR},
+      DBPPTExpertOpinion = #{record.dbpptexpertopinion,jdbcType=VARCHAR},
+      DBPPTExpertDeclareTime = #{record.dbpptexpertdeclaretime,jdbcType=VARCHAR},
+      DBPPTExpertSHR = #{record.dbpptexpertshr,jdbcType=VARCHAR},
+      KTBGInfoId = #{record.ktbginfoid,jdbcType=INTEGER},
+      ZQJCBInfoId = #{record.zqjcbinfoid,jdbcType=INTEGER},
+      BYLWInfoId = #{record.bylwinfoid,jdbcType=INTEGER},
+      DBPPTInfoId = #{record.dbpptinfoid,jdbcType=INTEGER},
+      ZDJLInfoId = #{record.zdjlinfoid,jdbcType=INTEGER},
+      WWYWHYJInfoId = #{record.wwywhyjinfoid,jdbcType=INTEGER},
+      ZDJLAuditStatusId = #{record.zdjlauditstatusid,jdbcType=INTEGER},
+      ZDJLInstructorOpinion = #{record.zdjlinstructoropinion,jdbcType=VARCHAR},
+      ZDJLInstructorDeclareTime = #{record.zdjlinstructordeclaretime,jdbcType=VARCHAR},
+      ZDJLInstructorSHR = #{record.zdjlinstructorshr,jdbcType=VARCHAR},
+      ZDJLExpertOpinion = #{record.zdjlexpertopinion,jdbcType=VARCHAR},
+      ZDJLExpertDeclareTime = #{record.zdjlexpertdeclaretime,jdbcType=VARCHAR},
+      ZDJLExpertSHR = #{record.zdjlexpertshr,jdbcType=VARCHAR},
+      WWYWHYJAuditStatusId = #{record.wwywhyjauditstatusid,jdbcType=INTEGER},
+      WWYWHYJInstructorOpinion = #{record.wwywhyjinstructoropinion,jdbcType=VARCHAR},
+      WWYWHYJInstructorDeclareTime = #{record.wwywhyjinstructordeclaretime,jdbcType=VARCHAR},
+      WWYWHYJInstructorSHR = #{record.wwywhyjinstructorshr,jdbcType=VARCHAR},
+      WWYWHYJExpertOpinion = #{record.wwywhyjexpertopinion,jdbcType=VARCHAR},
+      WWYWHYJExpertDeclareTime = #{record.wwywhyjexpertdeclaretime,jdbcType=VARCHAR},
+      WWYWHYJExpertSHR = #{record.wwywhyjexpertshr,jdbcType=VARCHAR},
+      Teacher_Declare_sign = #{record.teacherDeclareSign,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdms.crud.bean.GraduationdesignresultWithBLOBs">
+    update graduationdesignresult
+    <set>
+      <if test="graduationdesignid != null">
+        GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="departmentid != null">
+        DepartmentId = #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="instructorid != null">
+        InstructorId = #{instructorid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        StudentId = #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="choosetime != null">
+        ChooseTime = #{choosetime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastalerttime != null">
+        LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        TypeId = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="titlesourceid != null">
+        TitleSourceId = #{titlesourceid,jdbcType=INTEGER},
+      </if>
+      <if test="ktbgauditstatusid != null">
+        KTBGAuditStatusId = #{ktbgauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="ktbginstructoropinion != null">
+        KTBGInstructorOpinion = #{ktbginstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbginstructordeclaretime != null">
+        KTBGInstructorDeclareTime = #{ktbginstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbginstructorshr != null">
+        KTBGInstructorSHR = #{ktbginstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbgexpertopinion != null">
+        KTBGExpertOpinion = #{ktbgexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbgexpertdeclaretime != null">
+        KTBGExpertDeclareTime = #{ktbgexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbgexpertshr != null">
+        KTBGExpertSHR = #{ktbgexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbauditstatusid != null">
+        ZQJCBAuditStatusId = #{zqjcbauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="zqjcbinstructoropinion != null">
+        ZQJCBInstructorOpinion = #{zqjcbinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbinstructordeclaretime != null">
+        ZQJCBInstructorDeclareTime = #{zqjcbinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbinstructorshr != null">
+        ZQJCBInstructorSHR = #{zqjcbinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbexpertopinion != null">
+        ZQJCBExpertOpinion = #{zqjcbexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbexpertdeclaretime != null">
+        ZQJCBExpertDeclareTime = #{zqjcbexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="zqjcbexpertshr != null">
+        ZQJCBExpertSHR = #{zqjcbexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwauditstatusid != null">
+        BYLWAuditStatusId = #{bylwauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="bylwinstructoropinion != null">
+        BYLWInstructorOpinion = #{bylwinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwinstructordeclaretime != null">
+        BYLWInstructorDeclareTime = #{bylwinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwinstructorshr != null">
+        BYLWInstructorSHR = #{bylwinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwexpertopinion != null">
+        BYLWExpertOpinion = #{bylwexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwexpertdeclaretime != null">
+        BYLWExpertDeclareTime = #{bylwexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwexpertshr != null">
+        BYLWExpertSHR = #{bylwexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptauditstatusid != null">
+        DBPPTAuditStatusId = #{dbpptauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="dbpptinstructoropinion != null">
+        DBPPTInstructorOpinion = #{dbpptinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptinstructordeclaretime != null">
+        DBPPTInstructorDeclareTime = #{dbpptinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptinstructorshr != null">
+        DBPPTInstructorSHR = #{dbpptinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptexpertopinion != null">
+        DBPPTExpertOpinion = #{dbpptexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptexpertdeclaretime != null">
+        DBPPTExpertDeclareTime = #{dbpptexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="dbpptexpertshr != null">
+        DBPPTExpertSHR = #{dbpptexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="ktbginfoid != null">
+        KTBGInfoId = #{ktbginfoid,jdbcType=INTEGER},
+      </if>
+      <if test="zqjcbinfoid != null">
+        ZQJCBInfoId = #{zqjcbinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="bylwinfoid != null">
+        BYLWInfoId = #{bylwinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="dbpptinfoid != null">
+        DBPPTInfoId = #{dbpptinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="zdjlinfoid != null">
+        ZDJLInfoId = #{zdjlinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="wwywhyjinfoid != null">
+        WWYWHYJInfoId = #{wwywhyjinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="zdjlauditstatusid != null">
+        ZDJLAuditStatusId = #{zdjlauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="zdjlinstructoropinion != null">
+        ZDJLInstructorOpinion = #{zdjlinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="zdjlinstructordeclaretime != null">
+        ZDJLInstructorDeclareTime = #{zdjlinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="zdjlinstructorshr != null">
+        ZDJLInstructorSHR = #{zdjlinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="zdjlexpertopinion != null">
+        ZDJLExpertOpinion = #{zdjlexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="zdjlexpertdeclaretime != null">
+        ZDJLExpertDeclareTime = #{zdjlexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="zdjlexpertshr != null">
+        ZDJLExpertSHR = #{zdjlexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjauditstatusid != null">
+        WWYWHYJAuditStatusId = #{wwywhyjauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="wwywhyjinstructoropinion != null">
+        WWYWHYJInstructorOpinion = #{wwywhyjinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjinstructordeclaretime != null">
+        WWYWHYJInstructorDeclareTime = #{wwywhyjinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjinstructorshr != null">
+        WWYWHYJInstructorSHR = #{wwywhyjinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjexpertopinion != null">
+        WWYWHYJExpertOpinion = #{wwywhyjexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjexpertdeclaretime != null">
+        WWYWHYJExpertDeclareTime = #{wwywhyjexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="wwywhyjexpertshr != null">
+        WWYWHYJExpertSHR = #{wwywhyjexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherDeclareSign != null">
+        Teacher_Declare_sign = #{teacherDeclareSign,jdbcType=BIT},
+      </if>
+      <if test="ktbginstructordetailopinion != null">
+        KTBGInstructorDetailOpinion = #{ktbginstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ktbgexpertdetailopinion != null">
+        KTBGExpertDetailOpinion = #{ktbgexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zqjcbinstructordetailopinion != null">
+        ZQJCBInstructorDetailOpinion = #{zqjcbinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zqjcbexpertdetailopinion != null">
+        ZQJCBExpertDetailOpinion = #{zqjcbexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bylwinstructordetailopinion != null">
+        BYLWInstructorDetailOpinion = #{bylwinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bylwexpertdetailopinion != null">
+        BYLWExpertDetailOpinion = #{bylwexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dbpptinstructordetailopinion != null">
+        DBPPTInstructorDetailOpinion = #{dbpptinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dbpptexpertdetailopinion != null">
+        DBPPTExpertDetailOpinion = #{dbpptexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zdjlinstructordetailopinion != null">
+        ZDJLInstructorDetailOpinion = #{zdjlinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zdjlexpertdetailopinion != null">
+        ZDJLExpertDetailOpinion = #{zdjlexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="wwywhyjinstructordetailopinion != null">
+        WWYWHYJInstructorDetailOpinion = #{wwywhyjinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="wwywhyjexpertdetailopinion != null">
+        WWYWHYJExpertDetailOpinion = #{wwywhyjexpertdetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where GraduationDesignResultId = #{graduationdesignresultid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gdms.crud.bean.GraduationdesignresultWithBLOBs">
+    update graduationdesignresult
+    set GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER},
+      DepartmentId = #{departmentid,jdbcType=INTEGER},
+      InstructorId = #{instructorid,jdbcType=VARCHAR},
+      StudentId = #{studentid,jdbcType=VARCHAR},
+      ChooseTime = #{choosetime,jdbcType=VARCHAR},
+      LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      Title = #{title,jdbcType=VARCHAR},
+      TypeId = #{typeid,jdbcType=INTEGER},
+      TitleSourceId = #{titlesourceid,jdbcType=INTEGER},
+      KTBGAuditStatusId = #{ktbgauditstatusid,jdbcType=INTEGER},
+      KTBGInstructorOpinion = #{ktbginstructoropinion,jdbcType=VARCHAR},
+      KTBGInstructorDeclareTime = #{ktbginstructordeclaretime,jdbcType=VARCHAR},
+      KTBGInstructorSHR = #{ktbginstructorshr,jdbcType=VARCHAR},
+      KTBGExpertOpinion = #{ktbgexpertopinion,jdbcType=VARCHAR},
+      KTBGExpertDeclareTime = #{ktbgexpertdeclaretime,jdbcType=VARCHAR},
+      KTBGExpertSHR = #{ktbgexpertshr,jdbcType=VARCHAR},
+      ZQJCBAuditStatusId = #{zqjcbauditstatusid,jdbcType=INTEGER},
+      ZQJCBInstructorOpinion = #{zqjcbinstructoropinion,jdbcType=VARCHAR},
+      ZQJCBInstructorDeclareTime = #{zqjcbinstructordeclaretime,jdbcType=VARCHAR},
+      ZQJCBInstructorSHR = #{zqjcbinstructorshr,jdbcType=VARCHAR},
+      ZQJCBExpertOpinion = #{zqjcbexpertopinion,jdbcType=VARCHAR},
+      ZQJCBExpertDeclareTime = #{zqjcbexpertdeclaretime,jdbcType=VARCHAR},
+      ZQJCBExpertSHR = #{zqjcbexpertshr,jdbcType=VARCHAR},
+      BYLWAuditStatusId = #{bylwauditstatusid,jdbcType=INTEGER},
+      BYLWInstructorOpinion = #{bylwinstructoropinion,jdbcType=VARCHAR},
+      BYLWInstructorDeclareTime = #{bylwinstructordeclaretime,jdbcType=VARCHAR},
+      BYLWInstructorSHR = #{bylwinstructorshr,jdbcType=VARCHAR},
+      BYLWExpertOpinion = #{bylwexpertopinion,jdbcType=VARCHAR},
+      BYLWExpertDeclareTime = #{bylwexpertdeclaretime,jdbcType=VARCHAR},
+      BYLWExpertSHR = #{bylwexpertshr,jdbcType=VARCHAR},
+      DBPPTAuditStatusId = #{dbpptauditstatusid,jdbcType=INTEGER},
+      DBPPTInstructorOpinion = #{dbpptinstructoropinion,jdbcType=VARCHAR},
+      DBPPTInstructorDeclareTime = #{dbpptinstructordeclaretime,jdbcType=VARCHAR},
+      DBPPTInstructorSHR = #{dbpptinstructorshr,jdbcType=VARCHAR},
+      DBPPTExpertOpinion = #{dbpptexpertopinion,jdbcType=VARCHAR},
+      DBPPTExpertDeclareTime = #{dbpptexpertdeclaretime,jdbcType=VARCHAR},
+      DBPPTExpertSHR = #{dbpptexpertshr,jdbcType=VARCHAR},
+      KTBGInfoId = #{ktbginfoid,jdbcType=INTEGER},
+      ZQJCBInfoId = #{zqjcbinfoid,jdbcType=INTEGER},
+      BYLWInfoId = #{bylwinfoid,jdbcType=INTEGER},
+      DBPPTInfoId = #{dbpptinfoid,jdbcType=INTEGER},
+      ZDJLInfoId = #{zdjlinfoid,jdbcType=INTEGER},
+      WWYWHYJInfoId = #{wwywhyjinfoid,jdbcType=INTEGER},
+      ZDJLAuditStatusId = #{zdjlauditstatusid,jdbcType=INTEGER},
+      ZDJLInstructorOpinion = #{zdjlinstructoropinion,jdbcType=VARCHAR},
+      ZDJLInstructorDeclareTime = #{zdjlinstructordeclaretime,jdbcType=VARCHAR},
+      ZDJLInstructorSHR = #{zdjlinstructorshr,jdbcType=VARCHAR},
+      ZDJLExpertOpinion = #{zdjlexpertopinion,jdbcType=VARCHAR},
+      ZDJLExpertDeclareTime = #{zdjlexpertdeclaretime,jdbcType=VARCHAR},
+      ZDJLExpertSHR = #{zdjlexpertshr,jdbcType=VARCHAR},
+      WWYWHYJAuditStatusId = #{wwywhyjauditstatusid,jdbcType=INTEGER},
+      WWYWHYJInstructorOpinion = #{wwywhyjinstructoropinion,jdbcType=VARCHAR},
+      WWYWHYJInstructorDeclareTime = #{wwywhyjinstructordeclaretime,jdbcType=VARCHAR},
+      WWYWHYJInstructorSHR = #{wwywhyjinstructorshr,jdbcType=VARCHAR},
+      WWYWHYJExpertOpinion = #{wwywhyjexpertopinion,jdbcType=VARCHAR},
+      WWYWHYJExpertDeclareTime = #{wwywhyjexpertdeclaretime,jdbcType=VARCHAR},
+      WWYWHYJExpertSHR = #{wwywhyjexpertshr,jdbcType=VARCHAR},
+      Teacher_Declare_sign = #{teacherDeclareSign,jdbcType=BIT},
+      KTBGInstructorDetailOpinion = #{ktbginstructordetailopinion,jdbcType=LONGVARCHAR},
+      KTBGExpertDetailOpinion = #{ktbgexpertdetailopinion,jdbcType=LONGVARCHAR},
+      ZQJCBInstructorDetailOpinion = #{zqjcbinstructordetailopinion,jdbcType=LONGVARCHAR},
+      ZQJCBExpertDetailOpinion = #{zqjcbexpertdetailopinion,jdbcType=LONGVARCHAR},
+      BYLWInstructorDetailOpinion = #{bylwinstructordetailopinion,jdbcType=LONGVARCHAR},
+      BYLWExpertDetailOpinion = #{bylwexpertdetailopinion,jdbcType=LONGVARCHAR},
+      DBPPTInstructorDetailOpinion = #{dbpptinstructordetailopinion,jdbcType=LONGVARCHAR},
+      DBPPTExpertDetailOpinion = #{dbpptexpertdetailopinion,jdbcType=LONGVARCHAR},
+      ZDJLInstructorDetailOpinion = #{zdjlinstructordetailopinion,jdbcType=LONGVARCHAR},
+      ZDJLExpertDetailOpinion = #{zdjlexpertdetailopinion,jdbcType=LONGVARCHAR},
+      WWYWHYJInstructorDetailOpinion = #{wwywhyjinstructordetailopinion,jdbcType=LONGVARCHAR},
+      WWYWHYJExpertDetailOpinion = #{wwywhyjexpertdetailopinion,jdbcType=LONGVARCHAR}
+    where GraduationDesignResultId = #{graduationdesignresultid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdms.crud.bean.Graduationdesignresult">
+    update graduationdesignresult
+    set GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER},
+      DepartmentId = #{departmentid,jdbcType=INTEGER},
+      InstructorId = #{instructorid,jdbcType=VARCHAR},
+      StudentId = #{studentid,jdbcType=VARCHAR},
+      ChooseTime = #{choosetime,jdbcType=VARCHAR},
+      LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      Title = #{title,jdbcType=VARCHAR},
+      TypeId = #{typeid,jdbcType=INTEGER},
+      TitleSourceId = #{titlesourceid,jdbcType=INTEGER},
+      KTBGAuditStatusId = #{ktbgauditstatusid,jdbcType=INTEGER},
+      KTBGInstructorOpinion = #{ktbginstructoropinion,jdbcType=VARCHAR},
+      KTBGInstructorDeclareTime = #{ktbginstructordeclaretime,jdbcType=VARCHAR},
+      KTBGInstructorSHR = #{ktbginstructorshr,jdbcType=VARCHAR},
+      KTBGExpertOpinion = #{ktbgexpertopinion,jdbcType=VARCHAR},
+      KTBGExpertDeclareTime = #{ktbgexpertdeclaretime,jdbcType=VARCHAR},
+      KTBGExpertSHR = #{ktbgexpertshr,jdbcType=VARCHAR},
+      ZQJCBAuditStatusId = #{zqjcbauditstatusid,jdbcType=INTEGER},
+      ZQJCBInstructorOpinion = #{zqjcbinstructoropinion,jdbcType=VARCHAR},
+      ZQJCBInstructorDeclareTime = #{zqjcbinstructordeclaretime,jdbcType=VARCHAR},
+      ZQJCBInstructorSHR = #{zqjcbinstructorshr,jdbcType=VARCHAR},
+      ZQJCBExpertOpinion = #{zqjcbexpertopinion,jdbcType=VARCHAR},
+      ZQJCBExpertDeclareTime = #{zqjcbexpertdeclaretime,jdbcType=VARCHAR},
+      ZQJCBExpertSHR = #{zqjcbexpertshr,jdbcType=VARCHAR},
+      BYLWAuditStatusId = #{bylwauditstatusid,jdbcType=INTEGER},
+      BYLWInstructorOpinion = #{bylwinstructoropinion,jdbcType=VARCHAR},
+      BYLWInstructorDeclareTime = #{bylwinstructordeclaretime,jdbcType=VARCHAR},
+      BYLWInstructorSHR = #{bylwinstructorshr,jdbcType=VARCHAR},
+      BYLWExpertOpinion = #{bylwexpertopinion,jdbcType=VARCHAR},
+      BYLWExpertDeclareTime = #{bylwexpertdeclaretime,jdbcType=VARCHAR},
+      BYLWExpertSHR = #{bylwexpertshr,jdbcType=VARCHAR},
+      DBPPTAuditStatusId = #{dbpptauditstatusid,jdbcType=INTEGER},
+      DBPPTInstructorOpinion = #{dbpptinstructoropinion,jdbcType=VARCHAR},
+      DBPPTInstructorDeclareTime = #{dbpptinstructordeclaretime,jdbcType=VARCHAR},
+      DBPPTInstructorSHR = #{dbpptinstructorshr,jdbcType=VARCHAR},
+      DBPPTExpertOpinion = #{dbpptexpertopinion,jdbcType=VARCHAR},
+      DBPPTExpertDeclareTime = #{dbpptexpertdeclaretime,jdbcType=VARCHAR},
+      DBPPTExpertSHR = #{dbpptexpertshr,jdbcType=VARCHAR},
+      KTBGInfoId = #{ktbginfoid,jdbcType=INTEGER},
+      ZQJCBInfoId = #{zqjcbinfoid,jdbcType=INTEGER},
+      BYLWInfoId = #{bylwinfoid,jdbcType=INTEGER},
+      DBPPTInfoId = #{dbpptinfoid,jdbcType=INTEGER},
+      ZDJLInfoId = #{zdjlinfoid,jdbcType=INTEGER},
+      WWYWHYJInfoId = #{wwywhyjinfoid,jdbcType=INTEGER},
+      ZDJLAuditStatusId = #{zdjlauditstatusid,jdbcType=INTEGER},
+      ZDJLInstructorOpinion = #{zdjlinstructoropinion,jdbcType=VARCHAR},
+      ZDJLInstructorDeclareTime = #{zdjlinstructordeclaretime,jdbcType=VARCHAR},
+      ZDJLInstructorSHR = #{zdjlinstructorshr,jdbcType=VARCHAR},
+      ZDJLExpertOpinion = #{zdjlexpertopinion,jdbcType=VARCHAR},
+      ZDJLExpertDeclareTime = #{zdjlexpertdeclaretime,jdbcType=VARCHAR},
+      ZDJLExpertSHR = #{zdjlexpertshr,jdbcType=VARCHAR},
+      WWYWHYJAuditStatusId = #{wwywhyjauditstatusid,jdbcType=INTEGER},
+      WWYWHYJInstructorOpinion = #{wwywhyjinstructoropinion,jdbcType=VARCHAR},
+      WWYWHYJInstructorDeclareTime = #{wwywhyjinstructordeclaretime,jdbcType=VARCHAR},
+      WWYWHYJInstructorSHR = #{wwywhyjinstructorshr,jdbcType=VARCHAR},
+      WWYWHYJExpertOpinion = #{wwywhyjexpertopinion,jdbcType=VARCHAR},
+      WWYWHYJExpertDeclareTime = #{wwywhyjexpertdeclaretime,jdbcType=VARCHAR},
+      WWYWHYJExpertSHR = #{wwywhyjexpertshr,jdbcType=VARCHAR},
+      Teacher_Declare_sign = #{teacherDeclareSign,jdbcType=BIT}
+    where GraduationDesignResultId = #{graduationdesignresultid,jdbcType=INTEGER}
+  </update>
+</mapper>

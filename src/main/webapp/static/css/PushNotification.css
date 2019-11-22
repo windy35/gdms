@@ -1,0 +1,33 @@
+@charset "UTF-8";
+.tzts{
+	position:absolute;
+	width:650px;
+	height:100%;
+/* 	background-color: red; */
+}
+.xslb{
+	display:inline;
+	position:absolute;
+	border:1px solid black;
+	top:0px;
+	left:650px;
+	width:350px;
+	height:100%;
+	/* background-color: orange; */
+}
+.studiv{
+	display:inline;
+	cursor: pointer;
+}
+.stuid{
+	display:inline;
+}
+.stuname{
+	display:inline;
+}
+.stuphone{
+	display:inline;
+}
+.studiv:hover{
+	background-color: #FFF8DC;
+}

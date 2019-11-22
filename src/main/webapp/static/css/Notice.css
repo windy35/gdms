@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+.noticetitle{
+    font-size: 15px;
+    color: #ed5766;	
+    font-weight: bold;
+}
+
+.left{
+	width:300px;
+	float:left;
+	color:black;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis; 
+	display:block;
+	cursor:pointer;
+	left:0px;
+}
+
+.right{
+	float:right;
+	color:#888888;
+}

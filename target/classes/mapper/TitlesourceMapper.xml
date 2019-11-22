@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdms.crud.dao.TitlesourceMapper">
+  <resultMap id="BaseResultMap" type="com.gdms.crud.bean.Titlesource">
+    <id column="TitleSourceId" jdbcType="INTEGER" property="titlesourceid" />
+    <result column="TitleSourceName" jdbcType="VARCHAR" property="titlesourcename" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    TitleSourceId, TitleSourceName
+  </sql>
+  <select id="selectByExample" parameterType="com.gdms.crud.bean.TitlesourceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from titlesource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from titlesource
+    where TitleSourceId = #{titlesourceid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from titlesource
+    where TitleSourceId = #{titlesourceid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdms.crud.bean.TitlesourceExample">
+    delete from titlesource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdms.crud.bean.Titlesource">
+    insert into titlesource (TitleSourceId, TitleSourceName)
+    values (#{titlesourceid,jdbcType=INTEGER}, #{titlesourcename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdms.crud.bean.Titlesource">
+    insert into titlesource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="titlesourceid != null">
+        TitleSourceId,
+      </if>
+      <if test="titlesourcename != null">
+        TitleSourceName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="titlesourceid != null">
+        #{titlesourceid,jdbcType=INTEGER},
+      </if>
+      <if test="titlesourcename != null">
+        #{titlesourcename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdms.crud.bean.TitlesourceExample" resultType="java.lang.Long">
+    select count(*) from titlesource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update titlesource
+    <set>
+      <if test="record.titlesourceid != null">
+        TitleSourceId = #{record.titlesourceid,jdbcType=INTEGER},
+      </if>
+      <if test="record.titlesourcename != null">
+        TitleSourceName = #{record.titlesourcename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update titlesource
+    set TitleSourceId = #{record.titlesourceid,jdbcType=INTEGER},
+      TitleSourceName = #{record.titlesourcename,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdms.crud.bean.Titlesource">
+    update titlesource
+    <set>
+      <if test="titlesourcename != null">
+        TitleSourceName = #{titlesourcename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TitleSourceId = #{titlesourceid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdms.crud.bean.Titlesource">
+    update titlesource
+    set TitleSourceName = #{titlesourcename,jdbcType=VARCHAR}
+    where TitleSourceId = #{titlesourceid,jdbcType=INTEGER}
+  </update>
+</mapper>

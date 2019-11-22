@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  	
+  	<!-- 取消生成映射相关文件的注释 -->	
+	<commentGenerator>
+  		<property name="suppressAllComments" value="true" />
+	</commentGenerator>	  
+	
+	<!-- 配置数据库连接信息 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/gdms"
+        userId="root"
+        password="mysql2018">
+    </jdbcConnection>
+
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- 指定JavaBean生成的位置 -->
+    <javaModelGenerator targetPackage="com.gdms.crud.bean"
+     targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+	
+	<!-- 指定SQL映射文件的位置 -->
+    <sqlMapGenerator targetPackage="mapper"  
+    targetProject=".\src\main\resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!-- 指定dao接口生成的位置 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.gdms.crud.dao"  
+    targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+
+	<!-- table指定每个表的生成策略 -->
+	<table tableName="Dbinfo" domainObjectName="Dbinfo"></table>
+<!-- 	<table tableName="Class" domainObjectName="Class"></table>
+	<table tableName="Department" domainObjectName="Department"></table>
+	<table tableName="Designtype" domainObjectName="Designtype"></table>	
+	<table tableName="Grade" domainObjectName="Grade"></table>
+	<table tableName="Graduationdesign" domainObjectName="Graduationdesign"></table>
+	<table tableName="Major" domainObjectName="Major"></table>
+	<table tableName="Student" domainObjectName="Student"></table>
+	<table tableName="Titlesource" domainObjectName="Titlesource"></table>
+	<table tableName="Graduationdesignresult" domainObjectName="Graduationdesignresult"></table>
+	<table tableName="Teacher" domainObjectName="Teacher"></table>    
+	<table tableName="Auditstatustype" domainObjectName="Auditstatustype"></table>
+	<table tableName="Ktbginfo" domainObjectName="Ktbginfo"></table>
+	<table tableName="Notice" domainObjectName="Notice"></table> 
+	<table tableName="Zdjlinfo" domainObjectName="Zdjlinfo"></table>
+	<table tableName="Zqjcinfo" domainObjectName="Zqjcinfo"></table>
+	<table tableName="Wwywhyjinfo" domainObjectName="Wwywhyjinfo"></table>
+	<table tableName="Bylwinfo" domainObjectName="Bylwinfo"></table>
+	<table tableName="Dbpptinfo" domainObjectName="Dbpptinfo"></table>
+	<table tableName="Lyhdtitleinfo" domainObjectName="Lyhdtitleinfo"></table>
+	<table tableName="Comment" domainObjectName="Comment"></table>
+	<table tableName="Adminn" domainObjectName="Adminn"></table>
+	<table tableName="Dbinfo" domainObjectName="Dbinfo"></table>
+	<table tableName="Teachernotice" domainObjectName="Teachernotice"></table>		
+	 --> 
+
+  </context>
+</generatorConfiguration>

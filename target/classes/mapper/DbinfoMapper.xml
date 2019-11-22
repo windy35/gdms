@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdms.crud.dao.DbinfoMapper">
+  <resultMap id="BaseResultMap" type="com.gdms.crud.bean.Dbinfo">
+    <id column="dbInfoid" jdbcType="INTEGER" property="dbinfoid" />
+    <result column="studentid" jdbcType="VARCHAR" property="studentid" />
+    <result column="dbtime" jdbcType="VARCHAR" property="dbtime" />
+    <result column="dbplace" jdbcType="VARCHAR" property="dbplace" />
+    <result column="dbcj" jdbcType="REAL" property="dbcj" />
+    <result column="pwzzxx" jdbcType="VARCHAR" property="pwzzxx" />
+    <result column="drpwxx" jdbcType="VARCHAR" property="drpwxx" />
+    <result column="msxx" jdbcType="VARCHAR" property="msxx" />
+    <result column="sypwxx" jdbcType="VARCHAR" property="sypwxx" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    dbInfoid, studentid, dbtime, dbplace, dbcj, pwzzxx, drpwxx, msxx, sypwxx
+  </sql>
+  <select id="selectByExample" parameterType="com.gdms.crud.bean.DbinfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dbinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dbinfo
+    where dbInfoid = #{dbinfoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbinfo
+    where dbInfoid = #{dbinfoid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdms.crud.bean.DbinfoExample">
+    delete from dbinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdms.crud.bean.Dbinfo">
+    insert into dbinfo (dbInfoid, studentid, dbtime, 
+      dbplace, dbcj, pwzzxx, 
+      drpwxx, msxx, sypwxx
+      )
+    values (#{dbinfoid,jdbcType=INTEGER}, #{studentid,jdbcType=VARCHAR}, #{dbtime,jdbcType=VARCHAR}, 
+      #{dbplace,jdbcType=VARCHAR}, #{dbcj,jdbcType=REAL}, #{pwzzxx,jdbcType=VARCHAR}, 
+      #{drpwxx,jdbcType=VARCHAR}, #{msxx,jdbcType=VARCHAR}, #{sypwxx,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdms.crud.bean.Dbinfo">
+    insert into dbinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dbinfoid != null">
+        dbInfoid,
+      </if>
+      <if test="studentid != null">
+        studentid,
+      </if>
+      <if test="dbtime != null">
+        dbtime,
+      </if>
+      <if test="dbplace != null">
+        dbplace,
+      </if>
+      <if test="dbcj != null">
+        dbcj,
+      </if>
+      <if test="pwzzxx != null">
+        pwzzxx,
+      </if>
+      <if test="drpwxx != null">
+        drpwxx,
+      </if>
+      <if test="msxx != null">
+        msxx,
+      </if>
+      <if test="sypwxx != null">
+        sypwxx,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dbinfoid != null">
+        #{dbinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="dbtime != null">
+        #{dbtime,jdbcType=VARCHAR},
+      </if>
+      <if test="dbplace != null">
+        #{dbplace,jdbcType=VARCHAR},
+      </if>
+      <if test="dbcj != null">
+        #{dbcj,jdbcType=REAL},
+      </if>
+      <if test="pwzzxx != null">
+        #{pwzzxx,jdbcType=VARCHAR},
+      </if>
+      <if test="drpwxx != null">
+        #{drpwxx,jdbcType=VARCHAR},
+      </if>
+      <if test="msxx != null">
+        #{msxx,jdbcType=VARCHAR},
+      </if>
+      <if test="sypwxx != null">
+        #{sypwxx,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdms.crud.bean.DbinfoExample" resultType="java.lang.Long">
+    select count(*) from dbinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update dbinfo
+    <set>
+      <if test="record.dbinfoid != null">
+        dbInfoid = #{record.dbinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentid != null">
+        studentid = #{record.studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbtime != null">
+        dbtime = #{record.dbtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbplace != null">
+        dbplace = #{record.dbplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbcj != null">
+        dbcj = #{record.dbcj,jdbcType=REAL},
+      </if>
+      <if test="record.pwzzxx != null">
+        pwzzxx = #{record.pwzzxx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drpwxx != null">
+        drpwxx = #{record.drpwxx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msxx != null">
+        msxx = #{record.msxx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sypwxx != null">
+        sypwxx = #{record.sypwxx,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update dbinfo
+    set dbInfoid = #{record.dbinfoid,jdbcType=INTEGER},
+      studentid = #{record.studentid,jdbcType=VARCHAR},
+      dbtime = #{record.dbtime,jdbcType=VARCHAR},
+      dbplace = #{record.dbplace,jdbcType=VARCHAR},
+      dbcj = #{record.dbcj,jdbcType=REAL},
+      pwzzxx = #{record.pwzzxx,jdbcType=VARCHAR},
+      drpwxx = #{record.drpwxx,jdbcType=VARCHAR},
+      msxx = #{record.msxx,jdbcType=VARCHAR},
+      sypwxx = #{record.sypwxx,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdms.crud.bean.Dbinfo">
+    update dbinfo
+    <set>
+      <if test="studentid != null">
+        studentid = #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="dbtime != null">
+        dbtime = #{dbtime,jdbcType=VARCHAR},
+      </if>
+      <if test="dbplace != null">
+        dbplace = #{dbplace,jdbcType=VARCHAR},
+      </if>
+      <if test="dbcj != null">
+        dbcj = #{dbcj,jdbcType=REAL},
+      </if>
+      <if test="pwzzxx != null">
+        pwzzxx = #{pwzzxx,jdbcType=VARCHAR},
+      </if>
+      <if test="drpwxx != null">
+        drpwxx = #{drpwxx,jdbcType=VARCHAR},
+      </if>
+      <if test="msxx != null">
+        msxx = #{msxx,jdbcType=VARCHAR},
+      </if>
+      <if test="sypwxx != null">
+        sypwxx = #{sypwxx,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dbInfoid = #{dbinfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdms.crud.bean.Dbinfo">
+    update dbinfo
+    set studentid = #{studentid,jdbcType=VARCHAR},
+      dbtime = #{dbtime,jdbcType=VARCHAR},
+      dbplace = #{dbplace,jdbcType=VARCHAR},
+      dbcj = #{dbcj,jdbcType=REAL},
+      pwzzxx = #{pwzzxx,jdbcType=VARCHAR},
+      drpwxx = #{drpwxx,jdbcType=VARCHAR},
+      msxx = #{msxx,jdbcType=VARCHAR},
+      sypwxx = #{sypwxx,jdbcType=VARCHAR}
+    where dbInfoid = #{dbinfoid,jdbcType=INTEGER}
+  </update>
+</mapper>

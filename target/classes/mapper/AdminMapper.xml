@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdms.crud.dao.AdminMapper">
+  <resultMap id="BaseResultMap" type="com.gdms.crud.bean.Admin">
+    <id column="AdminId" jdbcType="VARCHAR" property="adminid" />
+    <result column="AdminName" jdbcType="VARCHAR" property="adminname" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="Email" jdbcType="VARCHAR" property="email" />
+    <result column="Phone" jdbcType="VARCHAR" property="phone" />
+    <result column="NowAccessTime" jdbcType="VARCHAR" property="nowaccesstime" />
+    <result column="LastAccessTime" jdbcType="VARCHAR" property="lastaccesstime" />
+    <result column="AccessCount" jdbcType="INTEGER" property="accesscount" />
+    <result column="NowAccessIPAddress" jdbcType="VARCHAR" property="nowaccessipaddress" />
+    <result column="LastAccessIPAddress" jdbcType="VARCHAR" property="lastaccessipaddress" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    AdminId, AdminName, Password, Email, Phone, NowAccessTime, LastAccessTime, AccessCount, 
+    NowAccessIPAddress, LastAccessIPAddress
+  </sql>
+  <select id="selectByExample" parameterType="com.gdms.crud.bean.AdminExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from admin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where AdminId = #{adminid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from admin
+    where AdminId = #{adminid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdms.crud.bean.AdminExample">
+    delete from admin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdms.crud.bean.Admin">
+    insert into admin (AdminId, AdminName, Password, 
+      Email, Phone, NowAccessTime, 
+      LastAccessTime, AccessCount, NowAccessIPAddress, 
+      LastAccessIPAddress)
+    values (#{adminid,jdbcType=VARCHAR}, #{adminname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{nowaccesstime,jdbcType=VARCHAR}, 
+      #{lastaccesstime,jdbcType=VARCHAR}, #{accesscount,jdbcType=INTEGER}, #{nowaccessipaddress,jdbcType=VARCHAR}, 
+      #{lastaccessipaddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdms.crud.bean.Admin">
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminid != null">
+        AdminId,
+      </if>
+      <if test="adminname != null">
+        AdminName,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+      <if test="email != null">
+        Email,
+      </if>
+      <if test="phone != null">
+        Phone,
+      </if>
+      <if test="nowaccesstime != null">
+        NowAccessTime,
+      </if>
+      <if test="lastaccesstime != null">
+        LastAccessTime,
+      </if>
+      <if test="accesscount != null">
+        AccessCount,
+      </if>
+      <if test="nowaccessipaddress != null">
+        NowAccessIPAddress,
+      </if>
+      <if test="lastaccessipaddress != null">
+        LastAccessIPAddress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminid != null">
+        #{adminid,jdbcType=VARCHAR},
+      </if>
+      <if test="adminname != null">
+        #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="nowaccesstime != null">
+        #{nowaccesstime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastaccesstime != null">
+        #{lastaccesstime,jdbcType=VARCHAR},
+      </if>
+      <if test="accesscount != null">
+        #{accesscount,jdbcType=INTEGER},
+      </if>
+      <if test="nowaccessipaddress != null">
+        #{nowaccessipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lastaccessipaddress != null">
+        #{lastaccessipaddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdms.crud.bean.AdminExample" resultType="java.lang.Long">
+    select count(*) from admin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update admin
+    <set>
+      <if test="record.adminid != null">
+        AdminId = #{record.adminid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminname != null">
+        AdminName = #{record.adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        Password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        Email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        Phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nowaccesstime != null">
+        NowAccessTime = #{record.nowaccesstime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastaccesstime != null">
+        LastAccessTime = #{record.lastaccesstime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accesscount != null">
+        AccessCount = #{record.accesscount,jdbcType=INTEGER},
+      </if>
+      <if test="record.nowaccessipaddress != null">
+        NowAccessIPAddress = #{record.nowaccessipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastaccessipaddress != null">
+        LastAccessIPAddress = #{record.lastaccessipaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update admin
+    set AdminId = #{record.adminid,jdbcType=VARCHAR},
+      AdminName = #{record.adminname,jdbcType=VARCHAR},
+      Password = #{record.password,jdbcType=VARCHAR},
+      Email = #{record.email,jdbcType=VARCHAR},
+      Phone = #{record.phone,jdbcType=VARCHAR},
+      NowAccessTime = #{record.nowaccesstime,jdbcType=VARCHAR},
+      LastAccessTime = #{record.lastaccesstime,jdbcType=VARCHAR},
+      AccessCount = #{record.accesscount,jdbcType=INTEGER},
+      NowAccessIPAddress = #{record.nowaccessipaddress,jdbcType=VARCHAR},
+      LastAccessIPAddress = #{record.lastaccessipaddress,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdms.crud.bean.Admin">
+    update admin
+    <set>
+      <if test="adminname != null">
+        AdminName = #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="nowaccesstime != null">
+        NowAccessTime = #{nowaccesstime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastaccesstime != null">
+        LastAccessTime = #{lastaccesstime,jdbcType=VARCHAR},
+      </if>
+      <if test="accesscount != null">
+        AccessCount = #{accesscount,jdbcType=INTEGER},
+      </if>
+      <if test="nowaccessipaddress != null">
+        NowAccessIPAddress = #{nowaccessipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lastaccessipaddress != null">
+        LastAccessIPAddress = #{lastaccessipaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AdminId = #{adminid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdms.crud.bean.Admin">
+    update admin
+    set AdminName = #{adminname,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      NowAccessTime = #{nowaccesstime,jdbcType=VARCHAR},
+      LastAccessTime = #{lastaccesstime,jdbcType=VARCHAR},
+      AccessCount = #{accesscount,jdbcType=INTEGER},
+      NowAccessIPAddress = #{nowaccessipaddress,jdbcType=VARCHAR},
+      LastAccessIPAddress = #{lastaccessipaddress,jdbcType=VARCHAR}
+    where AdminId = #{adminid,jdbcType=VARCHAR}
+  </update>
+</mapper>

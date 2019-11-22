@@ -1,0 +1,316 @@
+@charset "UTF-8";
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color:#E7F1FA;
+}
+.text_left{
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+    line-height: 30px;
+}
+
+.text_right{
+	width: 230px;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: left;
+}
+
+ul,li {
+    list-style: none;    
+}
+
+.li_width{
+    float: left;
+    height: 32px;
+    width: 50%;
+}
+
+.start {
+	display:block;
+	float:left;
+	padding:3px;
+	margin-right:5px;    
+    width: 20px;
+    height: 20px;
+    left: 0px;
+    top: 0px;
+    background: url(../images/start.png) no-repeat 0 0;
+}
+.text{
+	font-size:15px;
+}
+.title{
+	left:5px;
+	top:0px;
+	float:left;
+    width: 100%;
+    height: 20px;
+    position: absolute;
+}
+
+.basicInfo{
+	width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;   
+	height: auto !important;
+    height:250px;
+	min-height: 250px;       
+}
+
+.basicInfocontext{
+	position: absolute;
+	left:5px;
+	top:20px;
+	width: 100%;
+    background-color:#dce0e3;
+    border:1px solid black;
+	height: auto !important;
+    height:150px;
+	min-height: 150px;    
+}
+
+.kcnrjs{
+	width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;   
+	height: auto !important;
+    height:80px;
+	min-height: 80px;       
+}
+
+.js{
+	position: absolute;
+	left:5px;
+	top:20px;
+	width: 100%;
+    background-color:#dce0e3;
+    border:1px solid black;
+	height: auto !important;
+    height:50px;
+	min-height: 50px;    
+}
+
+.Task{
+	width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;   
+	height: auto !important;
+    height:80px;
+	min-height: 80px;       
+}
+
+.TaskJS{
+	position: absolute;
+	left:5px;
+	top:20px;
+	width: 100%;
+    background-color:#dce0e3;
+    border:1px solid black;
+	height: auto !important;
+    height:50px;
+	min-height: 50px;    
+}
+
+.Workload{
+	width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;   
+	height: auto !important;
+    height:50px;
+	min-height: 50px;       
+}
+
+.WorkloadJS{
+	position: absolute;
+	left:5px;
+	top:20px;
+	width: 100%;
+    background-color:#dce0e3;
+    border:1px solid black;
+	height: auto !important;
+    height:30px;
+	min-height: 30px;    
+}
+
+.Complexity{
+	width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;   
+	height: auto !important;
+    height:50px;
+	min-height: 50px;       
+}
+
+.ComplexityJS{
+	position: absolute;
+	left:5px;
+	top:20px;
+	width: 100%;
+    background-color:#dce0e3;
+    border:1px solid black;
+	height: auto !important;
+    height:30px;
+	min-height: 30px;    
+}
+
+.XSS{
+	width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;   
+	height: auto !important;
+    height:50px;
+	min-height: 50px;       
+}
+
+.XSSJS{
+	position: absolute;
+	left:5px;
+	top:20px;
+	width: 100%;
+    background-color:#dce0e3;
+    border:1px solid black;
+	height: auto !important;
+    height:30px;
+	min-height: 30px;    
+}
+
+.KTSHQK{
+	width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;   
+	height: auto !important;
+    height:50px;
+	min-height: 50px;       
+}
+
+.KTSHQKJS{
+	position: relative;
+	left:5px;
+	top:20px;
+	width: 100%;
+    background-color:#dce0e3;
+    border:1px solid black;
+	height: auto !important;
+    height:30px;
+	min-height: 30px;    
+}
+
+.SHQK{	
+    position: relative;
+    width: 100%;
+    left: 0px;
+    top: 20px;   
+	height: auto !important;
+    height:50px;
+	min-height: 50px;       
+}
+
+.SHQKJS{
+	position: absolute;
+	left:5px;
+	top:20px;
+	width: 100%;
+    background-color:#dce0e3;
+    border:1px solid black;
+	height: auto !important;
+    height:30px;
+	min-height: 30px;    
+}
+
+.KTSHQK{
+	width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;   
+	height: auto !important;
+    height:50px;
+	min-height: 50px;       
+}
+
+.KTSHQKJS{
+	position: absolute;
+	left:5px;
+	top:20px;
+	width: 100%;
+    background-color:#dce0e3;
+    border:1px solid black;
+	height: auto !important;
+    height:30px;
+	min-height: 30px;    
+}
+
+
+.border{
+	width: 100%;
+	height: 80px;
+    border:1px solid red;	
+    text-align:center;
+}
+
+.tablestyle{
+	border:1;
+	width:100%;
+	height:300px;
+}
+
+.txt_left_top{
+	text-align:left;
+	vertical-align:top;
+}
+
+.txt_right_bottom{
+	text-align:right;
+	vertical-align:bottom;
+}
+
+.ktbgxq{
+	width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;   
+	height: auto !important;
+    height:50px;
+	min-height: 50px;       
+}
+
+.ktbgxqcontext{
+	position:relative;
+	top:20px;
+	left:1%;
+	width:75%;
+	border:1px solid black;
+}
+
+.FJ{
+	width: 100%;
+    position: relative;
+    left: 0px;
+    top: 20px;    
+	height: auto !important;
+    height:50px;
+	min-height: 50px;       
+}
+
+.FJcontext{
+	position:absolute;
+	top:20px;
+	left:1%;
+	width:75%;
+	border:1px solid black;
+}
+

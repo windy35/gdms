@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdms.crud.dao.GraduationdesignMapper">
+  <resultMap id="BaseResultMap" type="com.gdms.crud.bean.Graduationdesign">
+    <id column="GraduationDesignId" jdbcType="INTEGER" property="graduationdesignid" />
+    <result column="Title" jdbcType="VARCHAR" property="title" />
+    <result column="DepartmentId" jdbcType="INTEGER" property="departmentid" />
+    <result column="InstructorId" jdbcType="VARCHAR" property="instructorid" />
+    <result column="CurrentStudentCount" jdbcType="INTEGER" property="currentstudentcount" />
+    <result column="TypeId" jdbcType="INTEGER" property="typeid" />
+    <result column="TitleSourceId" jdbcType="INTEGER" property="titlesourceid" />
+    <result column="TopicSelectionMode" jdbcType="VARCHAR" property="topicselectionmode" />
+    <result column="Workload" jdbcType="VARCHAR" property="workload" />
+    <result column="Complexity" jdbcType="VARCHAR" property="complexity" />
+    <result column="RequireStudentCount" jdbcType="INTEGER" property="requirestudentcount" />
+    <result column="OptionalProfessional" jdbcType="VARCHAR" property="optionalprofessional" />
+    <result column="SubjectAffiliation" jdbcType="VARCHAR" property="subjectaffiliation" />
+    <result column="DeclareTime" jdbcType="VARCHAR" property="declaretime" />
+    <result column="InstructorName" jdbcType="VARCHAR" property="instructorname" />
+    <result column="DeclareStudentNo" jdbcType="VARCHAR" property="declarestudentno" />
+    <result column="BSXTAuditStatusId" jdbcType="INTEGER" property="bsxtauditstatusid" />
+    <result column="BSXTInstructorOpinion" jdbcType="VARCHAR" property="bsxtinstructoropinion" />
+    <result column="BSXTInstructorDeclareTime" jdbcType="VARCHAR" property="bsxtinstructordeclaretime" />
+    <result column="BSXTInstructorSHR" jdbcType="VARCHAR" property="bsxtinstructorshr" />
+    <result column="BSXTExpertOpinion" jdbcType="VARCHAR" property="bsxtexpertopinion" />
+    <result column="BSXTExpertDetailOpinion" jdbcType="VARCHAR" property="bsxtexpertdetailopinion" />
+    <result column="BSXTExpertDeclareTime" jdbcType="VARCHAR" property="bsxtexpertdeclaretime" />
+    <result column="BSXTExpertSHR" jdbcType="VARCHAR" property="bsxtexpertshr" />
+    <result column="ChooseStudentId" jdbcType="VARCHAR" property="choosestudentid" />
+    <result column="Teacher_Declare_sign" jdbcType="BIT" property="teacherDeclareSign" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gdms.crud.bean.GraduationdesignWithBLOBs">
+    <result column="GDIntroduction" jdbcType="LONGVARCHAR" property="gdintroduction" />
+    <result column="GDTask" jdbcType="LONGVARCHAR" property="gdtask" />
+    <result column="BSXTInstructorDetailOpinion" jdbcType="LONGVARCHAR" property="bsxtinstructordetailopinion" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    GraduationDesignId, Title, DepartmentId, InstructorId, CurrentStudentCount, TypeId, 
+    TitleSourceId, TopicSelectionMode, Workload, Complexity, RequireStudentCount, OptionalProfessional, 
+    SubjectAffiliation, DeclareTime, InstructorName, DeclareStudentNo, BSXTAuditStatusId, 
+    BSXTInstructorOpinion, BSXTInstructorDeclareTime, BSXTInstructorSHR, BSXTExpertOpinion, 
+    BSXTExpertDetailOpinion, BSXTExpertDeclareTime, BSXTExpertSHR, ChooseStudentId, Teacher_Declare_sign
+  </sql>
+  <sql id="Blob_Column_List">
+    GDIntroduction, GDTask, BSXTInstructorDetailOpinion
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.gdms.crud.bean.GraduationdesignExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from graduationdesign
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.gdms.crud.bean.GraduationdesignExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from graduationdesign
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from graduationdesign
+    where GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from graduationdesign
+    where GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdms.crud.bean.GraduationdesignExample">
+    delete from graduationdesign
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdms.crud.bean.GraduationdesignWithBLOBs">
+    insert into graduationdesign (GraduationDesignId, Title, DepartmentId, 
+      InstructorId, CurrentStudentCount, TypeId, 
+      TitleSourceId, TopicSelectionMode, Workload, 
+      Complexity, RequireStudentCount, OptionalProfessional, 
+      SubjectAffiliation, DeclareTime, InstructorName, 
+      DeclareStudentNo, BSXTAuditStatusId, BSXTInstructorOpinion, 
+      BSXTInstructorDeclareTime, BSXTInstructorSHR, 
+      BSXTExpertOpinion, BSXTExpertDetailOpinion, 
+      BSXTExpertDeclareTime, BSXTExpertSHR, ChooseStudentId, 
+      Teacher_Declare_sign, GDIntroduction, GDTask, 
+      BSXTInstructorDetailOpinion)
+    values (#{graduationdesignid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{departmentid,jdbcType=INTEGER}, 
+      #{instructorid,jdbcType=VARCHAR}, #{currentstudentcount,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}, 
+      #{titlesourceid,jdbcType=INTEGER}, #{topicselectionmode,jdbcType=VARCHAR}, #{workload,jdbcType=VARCHAR}, 
+      #{complexity,jdbcType=VARCHAR}, #{requirestudentcount,jdbcType=INTEGER}, #{optionalprofessional,jdbcType=VARCHAR}, 
+      #{subjectaffiliation,jdbcType=VARCHAR}, #{declaretime,jdbcType=VARCHAR}, #{instructorname,jdbcType=VARCHAR}, 
+      #{declarestudentno,jdbcType=VARCHAR}, #{bsxtauditstatusid,jdbcType=INTEGER}, #{bsxtinstructoropinion,jdbcType=VARCHAR}, 
+      #{bsxtinstructordeclaretime,jdbcType=VARCHAR}, #{bsxtinstructorshr,jdbcType=VARCHAR}, 
+      #{bsxtexpertopinion,jdbcType=VARCHAR}, #{bsxtexpertdetailopinion,jdbcType=VARCHAR}, 
+      #{bsxtexpertdeclaretime,jdbcType=VARCHAR}, #{bsxtexpertshr,jdbcType=VARCHAR}, #{choosestudentid,jdbcType=VARCHAR}, 
+      #{teacherDeclareSign,jdbcType=BIT}, #{gdintroduction,jdbcType=LONGVARCHAR}, #{gdtask,jdbcType=LONGVARCHAR}, 
+      #{bsxtinstructordetailopinion,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdms.crud.bean.GraduationdesignWithBLOBs">
+    insert into graduationdesign
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="graduationdesignid != null">
+        GraduationDesignId,
+      </if>
+      <if test="title != null">
+        Title,
+      </if>
+      <if test="departmentid != null">
+        DepartmentId,
+      </if>
+      <if test="instructorid != null">
+        InstructorId,
+      </if>
+      <if test="currentstudentcount != null">
+        CurrentStudentCount,
+      </if>
+      <if test="typeid != null">
+        TypeId,
+      </if>
+      <if test="titlesourceid != null">
+        TitleSourceId,
+      </if>
+      <if test="topicselectionmode != null">
+        TopicSelectionMode,
+      </if>
+      <if test="workload != null">
+        Workload,
+      </if>
+      <if test="complexity != null">
+        Complexity,
+      </if>
+      <if test="requirestudentcount != null">
+        RequireStudentCount,
+      </if>
+      <if test="optionalprofessional != null">
+        OptionalProfessional,
+      </if>
+      <if test="subjectaffiliation != null">
+        SubjectAffiliation,
+      </if>
+      <if test="declaretime != null">
+        DeclareTime,
+      </if>
+      <if test="instructorname != null">
+        InstructorName,
+      </if>
+      <if test="declarestudentno != null">
+        DeclareStudentNo,
+      </if>
+      <if test="bsxtauditstatusid != null">
+        BSXTAuditStatusId,
+      </if>
+      <if test="bsxtinstructoropinion != null">
+        BSXTInstructorOpinion,
+      </if>
+      <if test="bsxtinstructordeclaretime != null">
+        BSXTInstructorDeclareTime,
+      </if>
+      <if test="bsxtinstructorshr != null">
+        BSXTInstructorSHR,
+      </if>
+      <if test="bsxtexpertopinion != null">
+        BSXTExpertOpinion,
+      </if>
+      <if test="bsxtexpertdetailopinion != null">
+        BSXTExpertDetailOpinion,
+      </if>
+      <if test="bsxtexpertdeclaretime != null">
+        BSXTExpertDeclareTime,
+      </if>
+      <if test="bsxtexpertshr != null">
+        BSXTExpertSHR,
+      </if>
+      <if test="choosestudentid != null">
+        ChooseStudentId,
+      </if>
+      <if test="teacherDeclareSign != null">
+        Teacher_Declare_sign,
+      </if>
+      <if test="gdintroduction != null">
+        GDIntroduction,
+      </if>
+      <if test="gdtask != null">
+        GDTask,
+      </if>
+      <if test="bsxtinstructordetailopinion != null">
+        BSXTInstructorDetailOpinion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="graduationdesignid != null">
+        #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null">
+        #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="instructorid != null">
+        #{instructorid,jdbcType=VARCHAR},
+      </if>
+      <if test="currentstudentcount != null">
+        #{currentstudentcount,jdbcType=INTEGER},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="titlesourceid != null">
+        #{titlesourceid,jdbcType=INTEGER},
+      </if>
+      <if test="topicselectionmode != null">
+        #{topicselectionmode,jdbcType=VARCHAR},
+      </if>
+      <if test="workload != null">
+        #{workload,jdbcType=VARCHAR},
+      </if>
+      <if test="complexity != null">
+        #{complexity,jdbcType=VARCHAR},
+      </if>
+      <if test="requirestudentcount != null">
+        #{requirestudentcount,jdbcType=INTEGER},
+      </if>
+      <if test="optionalprofessional != null">
+        #{optionalprofessional,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectaffiliation != null">
+        #{subjectaffiliation,jdbcType=VARCHAR},
+      </if>
+      <if test="declaretime != null">
+        #{declaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="instructorname != null">
+        #{instructorname,jdbcType=VARCHAR},
+      </if>
+      <if test="declarestudentno != null">
+        #{declarestudentno,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtauditstatusid != null">
+        #{bsxtauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="bsxtinstructoropinion != null">
+        #{bsxtinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtinstructordeclaretime != null">
+        #{bsxtinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtinstructorshr != null">
+        #{bsxtinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtexpertopinion != null">
+        #{bsxtexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtexpertdetailopinion != null">
+        #{bsxtexpertdetailopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtexpertdeclaretime != null">
+        #{bsxtexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtexpertshr != null">
+        #{bsxtexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="choosestudentid != null">
+        #{choosestudentid,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherDeclareSign != null">
+        #{teacherDeclareSign,jdbcType=BIT},
+      </if>
+      <if test="gdintroduction != null">
+        #{gdintroduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gdtask != null">
+        #{gdtask,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bsxtinstructordetailopinion != null">
+        #{bsxtinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdms.crud.bean.GraduationdesignExample" resultType="java.lang.Long">
+    select count(*) from graduationdesign
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update graduationdesign
+    <set>
+      <if test="record.graduationdesignid != null">
+        GraduationDesignId = #{record.graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null">
+        Title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.departmentid != null">
+        DepartmentId = #{record.departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.instructorid != null">
+        InstructorId = #{record.instructorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currentstudentcount != null">
+        CurrentStudentCount = #{record.currentstudentcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.typeid != null">
+        TypeId = #{record.typeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.titlesourceid != null">
+        TitleSourceId = #{record.titlesourceid,jdbcType=INTEGER},
+      </if>
+      <if test="record.topicselectionmode != null">
+        TopicSelectionMode = #{record.topicselectionmode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workload != null">
+        Workload = #{record.workload,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complexity != null">
+        Complexity = #{record.complexity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requirestudentcount != null">
+        RequireStudentCount = #{record.requirestudentcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.optionalprofessional != null">
+        OptionalProfessional = #{record.optionalprofessional,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subjectaffiliation != null">
+        SubjectAffiliation = #{record.subjectaffiliation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.declaretime != null">
+        DeclareTime = #{record.declaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.instructorname != null">
+        InstructorName = #{record.instructorname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.declarestudentno != null">
+        DeclareStudentNo = #{record.declarestudentno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bsxtauditstatusid != null">
+        BSXTAuditStatusId = #{record.bsxtauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="record.bsxtinstructoropinion != null">
+        BSXTInstructorOpinion = #{record.bsxtinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bsxtinstructordeclaretime != null">
+        BSXTInstructorDeclareTime = #{record.bsxtinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bsxtinstructorshr != null">
+        BSXTInstructorSHR = #{record.bsxtinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bsxtexpertopinion != null">
+        BSXTExpertOpinion = #{record.bsxtexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bsxtexpertdetailopinion != null">
+        BSXTExpertDetailOpinion = #{record.bsxtexpertdetailopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bsxtexpertdeclaretime != null">
+        BSXTExpertDeclareTime = #{record.bsxtexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bsxtexpertshr != null">
+        BSXTExpertSHR = #{record.bsxtexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.choosestudentid != null">
+        ChooseStudentId = #{record.choosestudentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherDeclareSign != null">
+        Teacher_Declare_sign = #{record.teacherDeclareSign,jdbcType=BIT},
+      </if>
+      <if test="record.gdintroduction != null">
+        GDIntroduction = #{record.gdintroduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.gdtask != null">
+        GDTask = #{record.gdtask,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.bsxtinstructordetailopinion != null">
+        BSXTInstructorDetailOpinion = #{record.bsxtinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update graduationdesign
+    set GraduationDesignId = #{record.graduationdesignid,jdbcType=INTEGER},
+      Title = #{record.title,jdbcType=VARCHAR},
+      DepartmentId = #{record.departmentid,jdbcType=INTEGER},
+      InstructorId = #{record.instructorid,jdbcType=VARCHAR},
+      CurrentStudentCount = #{record.currentstudentcount,jdbcType=INTEGER},
+      TypeId = #{record.typeid,jdbcType=INTEGER},
+      TitleSourceId = #{record.titlesourceid,jdbcType=INTEGER},
+      TopicSelectionMode = #{record.topicselectionmode,jdbcType=VARCHAR},
+      Workload = #{record.workload,jdbcType=VARCHAR},
+      Complexity = #{record.complexity,jdbcType=VARCHAR},
+      RequireStudentCount = #{record.requirestudentcount,jdbcType=INTEGER},
+      OptionalProfessional = #{record.optionalprofessional,jdbcType=VARCHAR},
+      SubjectAffiliation = #{record.subjectaffiliation,jdbcType=VARCHAR},
+      DeclareTime = #{record.declaretime,jdbcType=VARCHAR},
+      InstructorName = #{record.instructorname,jdbcType=VARCHAR},
+      DeclareStudentNo = #{record.declarestudentno,jdbcType=VARCHAR},
+      BSXTAuditStatusId = #{record.bsxtauditstatusid,jdbcType=INTEGER},
+      BSXTInstructorOpinion = #{record.bsxtinstructoropinion,jdbcType=VARCHAR},
+      BSXTInstructorDeclareTime = #{record.bsxtinstructordeclaretime,jdbcType=VARCHAR},
+      BSXTInstructorSHR = #{record.bsxtinstructorshr,jdbcType=VARCHAR},
+      BSXTExpertOpinion = #{record.bsxtexpertopinion,jdbcType=VARCHAR},
+      BSXTExpertDetailOpinion = #{record.bsxtexpertdetailopinion,jdbcType=VARCHAR},
+      BSXTExpertDeclareTime = #{record.bsxtexpertdeclaretime,jdbcType=VARCHAR},
+      BSXTExpertSHR = #{record.bsxtexpertshr,jdbcType=VARCHAR},
+      ChooseStudentId = #{record.choosestudentid,jdbcType=VARCHAR},
+      Teacher_Declare_sign = #{record.teacherDeclareSign,jdbcType=BIT},
+      GDIntroduction = #{record.gdintroduction,jdbcType=LONGVARCHAR},
+      GDTask = #{record.gdtask,jdbcType=LONGVARCHAR},
+      BSXTInstructorDetailOpinion = #{record.bsxtinstructordetailopinion,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update graduationdesign
+    set GraduationDesignId = #{record.graduationdesignid,jdbcType=INTEGER},
+      Title = #{record.title,jdbcType=VARCHAR},
+      DepartmentId = #{record.departmentid,jdbcType=INTEGER},
+      InstructorId = #{record.instructorid,jdbcType=VARCHAR},
+      CurrentStudentCount = #{record.currentstudentcount,jdbcType=INTEGER},
+      TypeId = #{record.typeid,jdbcType=INTEGER},
+      TitleSourceId = #{record.titlesourceid,jdbcType=INTEGER},
+      TopicSelectionMode = #{record.topicselectionmode,jdbcType=VARCHAR},
+      Workload = #{record.workload,jdbcType=VARCHAR},
+      Complexity = #{record.complexity,jdbcType=VARCHAR},
+      RequireStudentCount = #{record.requirestudentcount,jdbcType=INTEGER},
+      OptionalProfessional = #{record.optionalprofessional,jdbcType=VARCHAR},
+      SubjectAffiliation = #{record.subjectaffiliation,jdbcType=VARCHAR},
+      DeclareTime = #{record.declaretime,jdbcType=VARCHAR},
+      InstructorName = #{record.instructorname,jdbcType=VARCHAR},
+      DeclareStudentNo = #{record.declarestudentno,jdbcType=VARCHAR},
+      BSXTAuditStatusId = #{record.bsxtauditstatusid,jdbcType=INTEGER},
+      BSXTInstructorOpinion = #{record.bsxtinstructoropinion,jdbcType=VARCHAR},
+      BSXTInstructorDeclareTime = #{record.bsxtinstructordeclaretime,jdbcType=VARCHAR},
+      BSXTInstructorSHR = #{record.bsxtinstructorshr,jdbcType=VARCHAR},
+      BSXTExpertOpinion = #{record.bsxtexpertopinion,jdbcType=VARCHAR},
+      BSXTExpertDetailOpinion = #{record.bsxtexpertdetailopinion,jdbcType=VARCHAR},
+      BSXTExpertDeclareTime = #{record.bsxtexpertdeclaretime,jdbcType=VARCHAR},
+      BSXTExpertSHR = #{record.bsxtexpertshr,jdbcType=VARCHAR},
+      ChooseStudentId = #{record.choosestudentid,jdbcType=VARCHAR},
+      Teacher_Declare_sign = #{record.teacherDeclareSign,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdms.crud.bean.GraduationdesignWithBLOBs">
+    update graduationdesign
+    <set>
+      <if test="title != null">
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null">
+        DepartmentId = #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="instructorid != null">
+        InstructorId = #{instructorid,jdbcType=VARCHAR},
+      </if>
+      <if test="currentstudentcount != null">
+        CurrentStudentCount = #{currentstudentcount,jdbcType=INTEGER},
+      </if>
+      <if test="typeid != null">
+        TypeId = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="titlesourceid != null">
+        TitleSourceId = #{titlesourceid,jdbcType=INTEGER},
+      </if>
+      <if test="topicselectionmode != null">
+        TopicSelectionMode = #{topicselectionmode,jdbcType=VARCHAR},
+      </if>
+      <if test="workload != null">
+        Workload = #{workload,jdbcType=VARCHAR},
+      </if>
+      <if test="complexity != null">
+        Complexity = #{complexity,jdbcType=VARCHAR},
+      </if>
+      <if test="requirestudentcount != null">
+        RequireStudentCount = #{requirestudentcount,jdbcType=INTEGER},
+      </if>
+      <if test="optionalprofessional != null">
+        OptionalProfessional = #{optionalprofessional,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectaffiliation != null">
+        SubjectAffiliation = #{subjectaffiliation,jdbcType=VARCHAR},
+      </if>
+      <if test="declaretime != null">
+        DeclareTime = #{declaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="instructorname != null">
+        InstructorName = #{instructorname,jdbcType=VARCHAR},
+      </if>
+      <if test="declarestudentno != null">
+        DeclareStudentNo = #{declarestudentno,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtauditstatusid != null">
+        BSXTAuditStatusId = #{bsxtauditstatusid,jdbcType=INTEGER},
+      </if>
+      <if test="bsxtinstructoropinion != null">
+        BSXTInstructorOpinion = #{bsxtinstructoropinion,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtinstructordeclaretime != null">
+        BSXTInstructorDeclareTime = #{bsxtinstructordeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtinstructorshr != null">
+        BSXTInstructorSHR = #{bsxtinstructorshr,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtexpertopinion != null">
+        BSXTExpertOpinion = #{bsxtexpertopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtexpertdetailopinion != null">
+        BSXTExpertDetailOpinion = #{bsxtexpertdetailopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtexpertdeclaretime != null">
+        BSXTExpertDeclareTime = #{bsxtexpertdeclaretime,jdbcType=VARCHAR},
+      </if>
+      <if test="bsxtexpertshr != null">
+        BSXTExpertSHR = #{bsxtexpertshr,jdbcType=VARCHAR},
+      </if>
+      <if test="choosestudentid != null">
+        ChooseStudentId = #{choosestudentid,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherDeclareSign != null">
+        Teacher_Declare_sign = #{teacherDeclareSign,jdbcType=BIT},
+      </if>
+      <if test="gdintroduction != null">
+        GDIntroduction = #{gdintroduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gdtask != null">
+        GDTask = #{gdtask,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bsxtinstructordetailopinion != null">
+        BSXTInstructorDetailOpinion = #{bsxtinstructordetailopinion,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gdms.crud.bean.GraduationdesignWithBLOBs">
+    update graduationdesign
+    set Title = #{title,jdbcType=VARCHAR},
+      DepartmentId = #{departmentid,jdbcType=INTEGER},
+      InstructorId = #{instructorid,jdbcType=VARCHAR},
+      CurrentStudentCount = #{currentstudentcount,jdbcType=INTEGER},
+      TypeId = #{typeid,jdbcType=INTEGER},
+      TitleSourceId = #{titlesourceid,jdbcType=INTEGER},
+      TopicSelectionMode = #{topicselectionmode,jdbcType=VARCHAR},
+      Workload = #{workload,jdbcType=VARCHAR},
+      Complexity = #{complexity,jdbcType=VARCHAR},
+      RequireStudentCount = #{requirestudentcount,jdbcType=INTEGER},
+      OptionalProfessional = #{optionalprofessional,jdbcType=VARCHAR},
+      SubjectAffiliation = #{subjectaffiliation,jdbcType=VARCHAR},
+      DeclareTime = #{declaretime,jdbcType=VARCHAR},
+      InstructorName = #{instructorname,jdbcType=VARCHAR},
+      DeclareStudentNo = #{declarestudentno,jdbcType=VARCHAR},
+      BSXTAuditStatusId = #{bsxtauditstatusid,jdbcType=INTEGER},
+      BSXTInstructorOpinion = #{bsxtinstructoropinion,jdbcType=VARCHAR},
+      BSXTInstructorDeclareTime = #{bsxtinstructordeclaretime,jdbcType=VARCHAR},
+      BSXTInstructorSHR = #{bsxtinstructorshr,jdbcType=VARCHAR},
+      BSXTExpertOpinion = #{bsxtexpertopinion,jdbcType=VARCHAR},
+      BSXTExpertDetailOpinion = #{bsxtexpertdetailopinion,jdbcType=VARCHAR},
+      BSXTExpertDeclareTime = #{bsxtexpertdeclaretime,jdbcType=VARCHAR},
+      BSXTExpertSHR = #{bsxtexpertshr,jdbcType=VARCHAR},
+      ChooseStudentId = #{choosestudentid,jdbcType=VARCHAR},
+      Teacher_Declare_sign = #{teacherDeclareSign,jdbcType=BIT},
+      GDIntroduction = #{gdintroduction,jdbcType=LONGVARCHAR},
+      GDTask = #{gdtask,jdbcType=LONGVARCHAR},
+      BSXTInstructorDetailOpinion = #{bsxtinstructordetailopinion,jdbcType=LONGVARCHAR}
+    where GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdms.crud.bean.Graduationdesign">
+    update graduationdesign
+    set Title = #{title,jdbcType=VARCHAR},
+      DepartmentId = #{departmentid,jdbcType=INTEGER},
+      InstructorId = #{instructorid,jdbcType=VARCHAR},
+      CurrentStudentCount = #{currentstudentcount,jdbcType=INTEGER},
+      TypeId = #{typeid,jdbcType=INTEGER},
+      TitleSourceId = #{titlesourceid,jdbcType=INTEGER},
+      TopicSelectionMode = #{topicselectionmode,jdbcType=VARCHAR},
+      Workload = #{workload,jdbcType=VARCHAR},
+      Complexity = #{complexity,jdbcType=VARCHAR},
+      RequireStudentCount = #{requirestudentcount,jdbcType=INTEGER},
+      OptionalProfessional = #{optionalprofessional,jdbcType=VARCHAR},
+      SubjectAffiliation = #{subjectaffiliation,jdbcType=VARCHAR},
+      DeclareTime = #{declaretime,jdbcType=VARCHAR},
+      InstructorName = #{instructorname,jdbcType=VARCHAR},
+      DeclareStudentNo = #{declarestudentno,jdbcType=VARCHAR},
+      BSXTAuditStatusId = #{bsxtauditstatusid,jdbcType=INTEGER},
+      BSXTInstructorOpinion = #{bsxtinstructoropinion,jdbcType=VARCHAR},
+      BSXTInstructorDeclareTime = #{bsxtinstructordeclaretime,jdbcType=VARCHAR},
+      BSXTInstructorSHR = #{bsxtinstructorshr,jdbcType=VARCHAR},
+      BSXTExpertOpinion = #{bsxtexpertopinion,jdbcType=VARCHAR},
+      BSXTExpertDetailOpinion = #{bsxtexpertdetailopinion,jdbcType=VARCHAR},
+      BSXTExpertDeclareTime = #{bsxtexpertdeclaretime,jdbcType=VARCHAR},
+      BSXTExpertSHR = #{bsxtexpertshr,jdbcType=VARCHAR},
+      ChooseStudentId = #{choosestudentid,jdbcType=VARCHAR},
+      Teacher_Declare_sign = #{teacherDeclareSign,jdbcType=BIT}
+    where GraduationDesignId = #{graduationdesignid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdms.crud.dao.ZqjcinfoMapper">
+  <resultMap id="BaseResultMap" type="com.gdms.crud.bean.Zqjcinfo">
+    <id column="ZQJCInfoId" jdbcType="INTEGER" property="zqjcinfoid" />
+    <result column="StudentID" jdbcType="VARCHAR" property="studentid" />
+    <result column="GraduationDesignID" jdbcType="INTEGER" property="graduationdesignid" />
+    <result column="XTBH" jdbcType="VARCHAR" property="xtbh" />
+    <result column="SFYRYT" jdbcType="VARCHAR" property="sfyryt" />
+    <result column="SFKTBG" jdbcType="VARCHAR" property="sfktbg" />
+    <result column="SFWXZS" jdbcType="VARCHAR" property="sfwxzs" />
+    <result column="JDQK" jdbcType="VARCHAR" property="jdqk" />
+    <result column="GZZTQK" jdbcType="VARCHAR" property="gzztqk" />
+    <result column="CYWXZLNL" jdbcType="VARCHAR" property="cywxzlnl" />
+    <result column="ZQZLPJ" jdbcType="VARCHAR" property="zqzlpj" />
+    <result column="BYLWNRTZ" jdbcType="VARCHAR" property="bylwnrtz" />
+    <result column="ZDCS" jdbcType="VARCHAR" property="zdcs" />
+    <result column="AQWC" jdbcType="VARCHAR" property="aqwc" />
+    <result column="YSCL" jdbcType="VARCHAR" property="yscl" />
+    <result column="FJName" jdbcType="VARCHAR" property="fjname" />
+    <result column="FJPath" jdbcType="VARCHAR" property="fjpath" />
+    <result column="UploadTime" jdbcType="VARCHAR" property="uploadtime" />
+    <result column="LastAlertTime" jdbcType="VARCHAR" property="lastalerttime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gdms.crud.bean.ZqjcinfoWithBLOBs">
+    <result column="QZRQ" jdbcType="LONGVARCHAR" property="qzrq" />
+    <result column="XTBHYY" jdbcType="LONGVARCHAR" property="xtbhyy" />
+    <result column="JDZHYY" jdbcType="LONGVARCHAR" property="jdzhyy" />
+    <result column="QT" jdbcType="LONGVARCHAR" property="qt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ZQJCInfoId, StudentID, GraduationDesignID, XTBH, SFYRYT, SFKTBG, SFWXZS, JDQK, GZZTQK, 
+    CYWXZLNL, ZQZLPJ, BYLWNRTZ, ZDCS, AQWC, YSCL, FJName, FJPath, UploadTime, LastAlertTime
+  </sql>
+  <sql id="Blob_Column_List">
+    QZRQ, XTBHYY, JDZHYY, QT
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.gdms.crud.bean.ZqjcinfoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from zqjcinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.gdms.crud.bean.ZqjcinfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from zqjcinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from zqjcinfo
+    where ZQJCInfoId = #{zqjcinfoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from zqjcinfo
+    where ZQJCInfoId = #{zqjcinfoid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdms.crud.bean.ZqjcinfoExample">
+    delete from zqjcinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdms.crud.bean.ZqjcinfoWithBLOBs">
+    insert into zqjcinfo (ZQJCInfoId, StudentID, GraduationDesignID, 
+      XTBH, SFYRYT, SFKTBG, 
+      SFWXZS, JDQK, GZZTQK, 
+      CYWXZLNL, ZQZLPJ, BYLWNRTZ, 
+      ZDCS, AQWC, YSCL, FJName, 
+      FJPath, UploadTime, LastAlertTime, 
+      QZRQ, XTBHYY, JDZHYY, 
+      QT)
+    values (#{zqjcinfoid,jdbcType=INTEGER}, #{studentid,jdbcType=VARCHAR}, #{graduationdesignid,jdbcType=INTEGER}, 
+      #{xtbh,jdbcType=VARCHAR}, #{sfyryt,jdbcType=VARCHAR}, #{sfktbg,jdbcType=VARCHAR}, 
+      #{sfwxzs,jdbcType=VARCHAR}, #{jdqk,jdbcType=VARCHAR}, #{gzztqk,jdbcType=VARCHAR}, 
+      #{cywxzlnl,jdbcType=VARCHAR}, #{zqzlpj,jdbcType=VARCHAR}, #{bylwnrtz,jdbcType=VARCHAR}, 
+      #{zdcs,jdbcType=VARCHAR}, #{aqwc,jdbcType=VARCHAR}, #{yscl,jdbcType=VARCHAR}, #{fjname,jdbcType=VARCHAR}, 
+      #{fjpath,jdbcType=VARCHAR}, #{uploadtime,jdbcType=VARCHAR}, #{lastalerttime,jdbcType=VARCHAR}, 
+      #{qzrq,jdbcType=LONGVARCHAR}, #{xtbhyy,jdbcType=LONGVARCHAR}, #{jdzhyy,jdbcType=LONGVARCHAR}, 
+      #{qt,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdms.crud.bean.ZqjcinfoWithBLOBs">
+    insert into zqjcinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zqjcinfoid != null">
+        ZQJCInfoId,
+      </if>
+      <if test="studentid != null">
+        StudentID,
+      </if>
+      <if test="graduationdesignid != null">
+        GraduationDesignID,
+      </if>
+      <if test="xtbh != null">
+        XTBH,
+      </if>
+      <if test="sfyryt != null">
+        SFYRYT,
+      </if>
+      <if test="sfktbg != null">
+        SFKTBG,
+      </if>
+      <if test="sfwxzs != null">
+        SFWXZS,
+      </if>
+      <if test="jdqk != null">
+        JDQK,
+      </if>
+      <if test="gzztqk != null">
+        GZZTQK,
+      </if>
+      <if test="cywxzlnl != null">
+        CYWXZLNL,
+      </if>
+      <if test="zqzlpj != null">
+        ZQZLPJ,
+      </if>
+      <if test="bylwnrtz != null">
+        BYLWNRTZ,
+      </if>
+      <if test="zdcs != null">
+        ZDCS,
+      </if>
+      <if test="aqwc != null">
+        AQWC,
+      </if>
+      <if test="yscl != null">
+        YSCL,
+      </if>
+      <if test="fjname != null">
+        FJName,
+      </if>
+      <if test="fjpath != null">
+        FJPath,
+      </if>
+      <if test="uploadtime != null">
+        UploadTime,
+      </if>
+      <if test="lastalerttime != null">
+        LastAlertTime,
+      </if>
+      <if test="qzrq != null">
+        QZRQ,
+      </if>
+      <if test="xtbhyy != null">
+        XTBHYY,
+      </if>
+      <if test="jdzhyy != null">
+        JDZHYY,
+      </if>
+      <if test="qt != null">
+        QT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zqjcinfoid != null">
+        #{zqjcinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationdesignid != null">
+        #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="xtbh != null">
+        #{xtbh,jdbcType=VARCHAR},
+      </if>
+      <if test="sfyryt != null">
+        #{sfyryt,jdbcType=VARCHAR},
+      </if>
+      <if test="sfktbg != null">
+        #{sfktbg,jdbcType=VARCHAR},
+      </if>
+      <if test="sfwxzs != null">
+        #{sfwxzs,jdbcType=VARCHAR},
+      </if>
+      <if test="jdqk != null">
+        #{jdqk,jdbcType=VARCHAR},
+      </if>
+      <if test="gzztqk != null">
+        #{gzztqk,jdbcType=VARCHAR},
+      </if>
+      <if test="cywxzlnl != null">
+        #{cywxzlnl,jdbcType=VARCHAR},
+      </if>
+      <if test="zqzlpj != null">
+        #{zqzlpj,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwnrtz != null">
+        #{bylwnrtz,jdbcType=VARCHAR},
+      </if>
+      <if test="zdcs != null">
+        #{zdcs,jdbcType=VARCHAR},
+      </if>
+      <if test="aqwc != null">
+        #{aqwc,jdbcType=VARCHAR},
+      </if>
+      <if test="yscl != null">
+        #{yscl,jdbcType=VARCHAR},
+      </if>
+      <if test="fjname != null">
+        #{fjname,jdbcType=VARCHAR},
+      </if>
+      <if test="fjpath != null">
+        #{fjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null">
+        #{uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastalerttime != null">
+        #{lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="qzrq != null">
+        #{qzrq,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xtbhyy != null">
+        #{xtbhyy,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jdzhyy != null">
+        #{jdzhyy,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qt != null">
+        #{qt,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdms.crud.bean.ZqjcinfoExample" resultType="java.lang.Long">
+    select count(*) from zqjcinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update zqjcinfo
+    <set>
+      <if test="record.zqjcinfoid != null">
+        ZQJCInfoId = #{record.zqjcinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentid != null">
+        StudentID = #{record.studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduationdesignid != null">
+        GraduationDesignID = #{record.graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="record.xtbh != null">
+        XTBH = #{record.xtbh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sfyryt != null">
+        SFYRYT = #{record.sfyryt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sfktbg != null">
+        SFKTBG = #{record.sfktbg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sfwxzs != null">
+        SFWXZS = #{record.sfwxzs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jdqk != null">
+        JDQK = #{record.jdqk,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gzztqk != null">
+        GZZTQK = #{record.gzztqk,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cywxzlnl != null">
+        CYWXZLNL = #{record.cywxzlnl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zqzlpj != null">
+        ZQZLPJ = #{record.zqzlpj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bylwnrtz != null">
+        BYLWNRTZ = #{record.bylwnrtz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zdcs != null">
+        ZDCS = #{record.zdcs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aqwc != null">
+        AQWC = #{record.aqwc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yscl != null">
+        YSCL = #{record.yscl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fjname != null">
+        FJName = #{record.fjname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fjpath != null">
+        FJPath = #{record.fjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadtime != null">
+        UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastalerttime != null">
+        LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qzrq != null">
+        QZRQ = #{record.qzrq,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.xtbhyy != null">
+        XTBHYY = #{record.xtbhyy,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.jdzhyy != null">
+        JDZHYY = #{record.jdzhyy,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.qt != null">
+        QT = #{record.qt,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update zqjcinfo
+    set ZQJCInfoId = #{record.zqjcinfoid,jdbcType=INTEGER},
+      StudentID = #{record.studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{record.graduationdesignid,jdbcType=INTEGER},
+      XTBH = #{record.xtbh,jdbcType=VARCHAR},
+      SFYRYT = #{record.sfyryt,jdbcType=VARCHAR},
+      SFKTBG = #{record.sfktbg,jdbcType=VARCHAR},
+      SFWXZS = #{record.sfwxzs,jdbcType=VARCHAR},
+      JDQK = #{record.jdqk,jdbcType=VARCHAR},
+      GZZTQK = #{record.gzztqk,jdbcType=VARCHAR},
+      CYWXZLNL = #{record.cywxzlnl,jdbcType=VARCHAR},
+      ZQZLPJ = #{record.zqzlpj,jdbcType=VARCHAR},
+      BYLWNRTZ = #{record.bylwnrtz,jdbcType=VARCHAR},
+      ZDCS = #{record.zdcs,jdbcType=VARCHAR},
+      AQWC = #{record.aqwc,jdbcType=VARCHAR},
+      YSCL = #{record.yscl,jdbcType=VARCHAR},
+      FJName = #{record.fjname,jdbcType=VARCHAR},
+      FJPath = #{record.fjpath,jdbcType=VARCHAR},
+      UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR},
+      QZRQ = #{record.qzrq,jdbcType=LONGVARCHAR},
+      XTBHYY = #{record.xtbhyy,jdbcType=LONGVARCHAR},
+      JDZHYY = #{record.jdzhyy,jdbcType=LONGVARCHAR},
+      QT = #{record.qt,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update zqjcinfo
+    set ZQJCInfoId = #{record.zqjcinfoid,jdbcType=INTEGER},
+      StudentID = #{record.studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{record.graduationdesignid,jdbcType=INTEGER},
+      XTBH = #{record.xtbh,jdbcType=VARCHAR},
+      SFYRYT = #{record.sfyryt,jdbcType=VARCHAR},
+      SFKTBG = #{record.sfktbg,jdbcType=VARCHAR},
+      SFWXZS = #{record.sfwxzs,jdbcType=VARCHAR},
+      JDQK = #{record.jdqk,jdbcType=VARCHAR},
+      GZZTQK = #{record.gzztqk,jdbcType=VARCHAR},
+      CYWXZLNL = #{record.cywxzlnl,jdbcType=VARCHAR},
+      ZQZLPJ = #{record.zqzlpj,jdbcType=VARCHAR},
+      BYLWNRTZ = #{record.bylwnrtz,jdbcType=VARCHAR},
+      ZDCS = #{record.zdcs,jdbcType=VARCHAR},
+      AQWC = #{record.aqwc,jdbcType=VARCHAR},
+      YSCL = #{record.yscl,jdbcType=VARCHAR},
+      FJName = #{record.fjname,jdbcType=VARCHAR},
+      FJPath = #{record.fjpath,jdbcType=VARCHAR},
+      UploadTime = #{record.uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{record.lastalerttime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdms.crud.bean.ZqjcinfoWithBLOBs">
+    update zqjcinfo
+    <set>
+      <if test="studentid != null">
+        StudentID = #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationdesignid != null">
+        GraduationDesignID = #{graduationdesignid,jdbcType=INTEGER},
+      </if>
+      <if test="xtbh != null">
+        XTBH = #{xtbh,jdbcType=VARCHAR},
+      </if>
+      <if test="sfyryt != null">
+        SFYRYT = #{sfyryt,jdbcType=VARCHAR},
+      </if>
+      <if test="sfktbg != null">
+        SFKTBG = #{sfktbg,jdbcType=VARCHAR},
+      </if>
+      <if test="sfwxzs != null">
+        SFWXZS = #{sfwxzs,jdbcType=VARCHAR},
+      </if>
+      <if test="jdqk != null">
+        JDQK = #{jdqk,jdbcType=VARCHAR},
+      </if>
+      <if test="gzztqk != null">
+        GZZTQK = #{gzztqk,jdbcType=VARCHAR},
+      </if>
+      <if test="cywxzlnl != null">
+        CYWXZLNL = #{cywxzlnl,jdbcType=VARCHAR},
+      </if>
+      <if test="zqzlpj != null">
+        ZQZLPJ = #{zqzlpj,jdbcType=VARCHAR},
+      </if>
+      <if test="bylwnrtz != null">
+        BYLWNRTZ = #{bylwnrtz,jdbcType=VARCHAR},
+      </if>
+      <if test="zdcs != null">
+        ZDCS = #{zdcs,jdbcType=VARCHAR},
+      </if>
+      <if test="aqwc != null">
+        AQWC = #{aqwc,jdbcType=VARCHAR},
+      </if>
+      <if test="yscl != null">
+        YSCL = #{yscl,jdbcType=VARCHAR},
+      </if>
+      <if test="fjname != null">
+        FJName = #{fjname,jdbcType=VARCHAR},
+      </if>
+      <if test="fjpath != null">
+        FJPath = #{fjpath,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null">
+        UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastalerttime != null">
+        LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      </if>
+      <if test="qzrq != null">
+        QZRQ = #{qzrq,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xtbhyy != null">
+        XTBHYY = #{xtbhyy,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jdzhyy != null">
+        JDZHYY = #{jdzhyy,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qt != null">
+        QT = #{qt,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ZQJCInfoId = #{zqjcinfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gdms.crud.bean.ZqjcinfoWithBLOBs">
+    update zqjcinfo
+    set StudentID = #{studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{graduationdesignid,jdbcType=INTEGER},
+      XTBH = #{xtbh,jdbcType=VARCHAR},
+      SFYRYT = #{sfyryt,jdbcType=VARCHAR},
+      SFKTBG = #{sfktbg,jdbcType=VARCHAR},
+      SFWXZS = #{sfwxzs,jdbcType=VARCHAR},
+      JDQK = #{jdqk,jdbcType=VARCHAR},
+      GZZTQK = #{gzztqk,jdbcType=VARCHAR},
+      CYWXZLNL = #{cywxzlnl,jdbcType=VARCHAR},
+      ZQZLPJ = #{zqzlpj,jdbcType=VARCHAR},
+      BYLWNRTZ = #{bylwnrtz,jdbcType=VARCHAR},
+      ZDCS = #{zdcs,jdbcType=VARCHAR},
+      AQWC = #{aqwc,jdbcType=VARCHAR},
+      YSCL = #{yscl,jdbcType=VARCHAR},
+      FJName = #{fjname,jdbcType=VARCHAR},
+      FJPath = #{fjpath,jdbcType=VARCHAR},
+      UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{lastalerttime,jdbcType=VARCHAR},
+      QZRQ = #{qzrq,jdbcType=LONGVARCHAR},
+      XTBHYY = #{xtbhyy,jdbcType=LONGVARCHAR},
+      JDZHYY = #{jdzhyy,jdbcType=LONGVARCHAR},
+      QT = #{qt,jdbcType=LONGVARCHAR}
+    where ZQJCInfoId = #{zqjcinfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdms.crud.bean.Zqjcinfo">
+    update zqjcinfo
+    set StudentID = #{studentid,jdbcType=VARCHAR},
+      GraduationDesignID = #{graduationdesignid,jdbcType=INTEGER},
+      XTBH = #{xtbh,jdbcType=VARCHAR},
+      SFYRYT = #{sfyryt,jdbcType=VARCHAR},
+      SFKTBG = #{sfktbg,jdbcType=VARCHAR},
+      SFWXZS = #{sfwxzs,jdbcType=VARCHAR},
+      JDQK = #{jdqk,jdbcType=VARCHAR},
+      GZZTQK = #{gzztqk,jdbcType=VARCHAR},
+      CYWXZLNL = #{cywxzlnl,jdbcType=VARCHAR},
+      ZQZLPJ = #{zqzlpj,jdbcType=VARCHAR},
+      BYLWNRTZ = #{bylwnrtz,jdbcType=VARCHAR},
+      ZDCS = #{zdcs,jdbcType=VARCHAR},
+      AQWC = #{aqwc,jdbcType=VARCHAR},
+      YSCL = #{yscl,jdbcType=VARCHAR},
+      FJName = #{fjname,jdbcType=VARCHAR},
+      FJPath = #{fjpath,jdbcType=VARCHAR},
+      UploadTime = #{uploadtime,jdbcType=VARCHAR},
+      LastAlertTime = #{lastalerttime,jdbcType=VARCHAR}
+    where ZQJCInfoId = #{zqjcinfoid,jdbcType=INTEGER}
+  </update>
+</mapper>

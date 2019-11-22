@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdms.crud.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.gdms.crud.bean.Comment">
+    <id column="CommentId" jdbcType="INTEGER" property="commentid" />
+    <result column="LyhdtitleInfoId" jdbcType="INTEGER" property="lyhdtitleinfoid" />
+    <result column="CommentTime" jdbcType="VARCHAR" property="commenttime" />
+    <result column="ReviewerId" jdbcType="VARCHAR" property="reviewerid" />
+    <result column="AgreeNum" jdbcType="INTEGER" property="agreenum" />
+    <result column="DisagreeNum" jdbcType="INTEGER" property="disagreenum" />
+    <result column="ReviewerSF" jdbcType="VARCHAR" property="reviewersf" />
+    <result column="ReadStatus" jdbcType="INTEGER" property="readstatus" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gdms.crud.bean.CommentWithBLOBs">
+    <result column="Context" jdbcType="LONGVARCHAR" property="context" />
+    <result column="DianZanZheNo" jdbcType="LONGVARCHAR" property="dianzanzheno" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CommentId, LyhdtitleInfoId, CommentTime, ReviewerId, AgreeNum, DisagreeNum, ReviewerSF, 
+    ReadStatus
+  </sql>
+  <sql id="Blob_Column_List">
+    Context, DianZanZheNo
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.gdms.crud.bean.CommentExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.gdms.crud.bean.CommentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment
+    where CommentId = #{commentid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from comment
+    where CommentId = #{commentid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdms.crud.bean.CommentExample">
+    delete from comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdms.crud.bean.CommentWithBLOBs">
+    insert into comment (CommentId, LyhdtitleInfoId, CommentTime, 
+      ReviewerId, AgreeNum, DisagreeNum, 
+      ReviewerSF, ReadStatus, Context, 
+      DianZanZheNo)
+    values (#{commentid,jdbcType=INTEGER}, #{lyhdtitleinfoid,jdbcType=INTEGER}, #{commenttime,jdbcType=VARCHAR}, 
+      #{reviewerid,jdbcType=VARCHAR}, #{agreenum,jdbcType=INTEGER}, #{disagreenum,jdbcType=INTEGER}, 
+      #{reviewersf,jdbcType=VARCHAR}, #{readstatus,jdbcType=INTEGER}, #{context,jdbcType=LONGVARCHAR}, 
+      #{dianzanzheno,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdms.crud.bean.CommentWithBLOBs">
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentid != null">
+        CommentId,
+      </if>
+      <if test="lyhdtitleinfoid != null">
+        LyhdtitleInfoId,
+      </if>
+      <if test="commenttime != null">
+        CommentTime,
+      </if>
+      <if test="reviewerid != null">
+        ReviewerId,
+      </if>
+      <if test="agreenum != null">
+        AgreeNum,
+      </if>
+      <if test="disagreenum != null">
+        DisagreeNum,
+      </if>
+      <if test="reviewersf != null">
+        ReviewerSF,
+      </if>
+      <if test="readstatus != null">
+        ReadStatus,
+      </if>
+      <if test="context != null">
+        Context,
+      </if>
+      <if test="dianzanzheno != null">
+        DianZanZheNo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentid != null">
+        #{commentid,jdbcType=INTEGER},
+      </if>
+      <if test="lyhdtitleinfoid != null">
+        #{lyhdtitleinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="commenttime != null">
+        #{commenttime,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewerid != null">
+        #{reviewerid,jdbcType=VARCHAR},
+      </if>
+      <if test="agreenum != null">
+        #{agreenum,jdbcType=INTEGER},
+      </if>
+      <if test="disagreenum != null">
+        #{disagreenum,jdbcType=INTEGER},
+      </if>
+      <if test="reviewersf != null">
+        #{reviewersf,jdbcType=VARCHAR},
+      </if>
+      <if test="readstatus != null">
+        #{readstatus,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dianzanzheno != null">
+        #{dianzanzheno,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdms.crud.bean.CommentExample" resultType="java.lang.Long">
+    select count(*) from comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update comment
+    <set>
+      <if test="record.commentid != null">
+        CommentId = #{record.commentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.lyhdtitleinfoid != null">
+        LyhdtitleInfoId = #{record.lyhdtitleinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.commenttime != null">
+        CommentTime = #{record.commenttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reviewerid != null">
+        ReviewerId = #{record.reviewerid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agreenum != null">
+        AgreeNum = #{record.agreenum,jdbcType=INTEGER},
+      </if>
+      <if test="record.disagreenum != null">
+        DisagreeNum = #{record.disagreenum,jdbcType=INTEGER},
+      </if>
+      <if test="record.reviewersf != null">
+        ReviewerSF = #{record.reviewersf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.readstatus != null">
+        ReadStatus = #{record.readstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.context != null">
+        Context = #{record.context,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.dianzanzheno != null">
+        DianZanZheNo = #{record.dianzanzheno,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update comment
+    set CommentId = #{record.commentid,jdbcType=INTEGER},
+      LyhdtitleInfoId = #{record.lyhdtitleinfoid,jdbcType=INTEGER},
+      CommentTime = #{record.commenttime,jdbcType=VARCHAR},
+      ReviewerId = #{record.reviewerid,jdbcType=VARCHAR},
+      AgreeNum = #{record.agreenum,jdbcType=INTEGER},
+      DisagreeNum = #{record.disagreenum,jdbcType=INTEGER},
+      ReviewerSF = #{record.reviewersf,jdbcType=VARCHAR},
+      ReadStatus = #{record.readstatus,jdbcType=INTEGER},
+      Context = #{record.context,jdbcType=LONGVARCHAR},
+      DianZanZheNo = #{record.dianzanzheno,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update comment
+    set CommentId = #{record.commentid,jdbcType=INTEGER},
+      LyhdtitleInfoId = #{record.lyhdtitleinfoid,jdbcType=INTEGER},
+      CommentTime = #{record.commenttime,jdbcType=VARCHAR},
+      ReviewerId = #{record.reviewerid,jdbcType=VARCHAR},
+      AgreeNum = #{record.agreenum,jdbcType=INTEGER},
+      DisagreeNum = #{record.disagreenum,jdbcType=INTEGER},
+      ReviewerSF = #{record.reviewersf,jdbcType=VARCHAR},
+      ReadStatus = #{record.readstatus,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdms.crud.bean.CommentWithBLOBs">
+    update comment
+    <set>
+      <if test="lyhdtitleinfoid != null">
+        LyhdtitleInfoId = #{lyhdtitleinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="commenttime != null">
+        CommentTime = #{commenttime,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewerid != null">
+        ReviewerId = #{reviewerid,jdbcType=VARCHAR},
+      </if>
+      <if test="agreenum != null">
+        AgreeNum = #{agreenum,jdbcType=INTEGER},
+      </if>
+      <if test="disagreenum != null">
+        DisagreeNum = #{disagreenum,jdbcType=INTEGER},
+      </if>
+      <if test="reviewersf != null">
+        ReviewerSF = #{reviewersf,jdbcType=VARCHAR},
+      </if>
+      <if test="readstatus != null">
+        ReadStatus = #{readstatus,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        Context = #{context,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dianzanzheno != null">
+        DianZanZheNo = #{dianzanzheno,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where CommentId = #{commentid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gdms.crud.bean.CommentWithBLOBs">
+    update comment
+    set LyhdtitleInfoId = #{lyhdtitleinfoid,jdbcType=INTEGER},
+      CommentTime = #{commenttime,jdbcType=VARCHAR},
+      ReviewerId = #{reviewerid,jdbcType=VARCHAR},
+      AgreeNum = #{agreenum,jdbcType=INTEGER},
+      DisagreeNum = #{disagreenum,jdbcType=INTEGER},
+      ReviewerSF = #{reviewersf,jdbcType=VARCHAR},
+      ReadStatus = #{readstatus,jdbcType=INTEGER},
+      Context = #{context,jdbcType=LONGVARCHAR},
+      DianZanZheNo = #{dianzanzheno,jdbcType=LONGVARCHAR}
+    where CommentId = #{commentid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdms.crud.bean.Comment">
+    update comment
+    set LyhdtitleInfoId = #{lyhdtitleinfoid,jdbcType=INTEGER},
+      CommentTime = #{commenttime,jdbcType=VARCHAR},
+      ReviewerId = #{reviewerid,jdbcType=VARCHAR},
+      AgreeNum = #{agreenum,jdbcType=INTEGER},
+      DisagreeNum = #{disagreenum,jdbcType=INTEGER},
+      ReviewerSF = #{reviewersf,jdbcType=VARCHAR},
+      ReadStatus = #{readstatus,jdbcType=INTEGER}
+    where CommentId = #{commentid,jdbcType=INTEGER}
+  </update>
+</mapper>
